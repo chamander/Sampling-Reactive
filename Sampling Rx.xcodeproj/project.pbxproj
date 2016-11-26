@@ -156,6 +156,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 62C98F051DE8478E003E2C5E /* Build configuration list for PBXNativeTarget "SamplingRx" */;
 			buildPhases = (
+				62A4072B1DE90D1A0005B619 /* Lint Source */,
 				62C98ED91DE8478D003E2C5E /* Sources */,
 				62C98EDA1DE8478D003E2C5E /* Frameworks */,
 				62C98EDB1DE8478D003E2C5E /* Resources */,
@@ -278,6 +279,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		62A4072B1DE90D1A0005B619 /* Lint Source */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Lint Source";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/bin/env rake swiftlint";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		62C98ED91DE8478D003E2C5E /* Sources */ = {

@@ -1,0 +1,13 @@
+disabled_rules:
+  - line_length
+  - opening_brace
+  - type_name
+included:
+  - Source
+  - Specs
+  - Features
+excluded:
+  - Carthage
+opt_in_rules:
+  - empty_count
+
