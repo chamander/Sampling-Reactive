@@ -2,7 +2,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class RotatingContentController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -15,3 +15,5 @@ class ViewController: UIViewController {
   }
 
 }
+
+import RxSwift
