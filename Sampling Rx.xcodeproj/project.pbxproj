@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62A336781DEA935200BB495E /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A336771DEA935200BB495E /* RxSwift.framework */; };
+		62A3367A1DEA935A00BB495E /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A336791DEA935A00BB495E /* RxCocoa.framework */; };
+		62A3367C1DEA93F700BB495E /* RxCocoa.framework in Copy Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = 62A336791DEA935A00BB495E /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		62A3367D1DEA93F700BB495E /* RxSwift.framework in Copy Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = 62A336771DEA935200BB495E /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		62C98F181DE84809003E2C5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C98F0F1DE84809003E2C5E /* AppDelegate.swift */; };
 		62C98F191DE84809003E2C5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62C98F101DE84809003E2C5E /* Assets.xcassets */; };
 		62C98F1A1DE84809003E2C5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C98F121DE84809003E2C5E /* LaunchScreen.storyboard */; };
@@ -33,7 +37,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		62A3367B1DEA93E300BB495E /* Copy Carthage Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				62A3367C1DEA93F700BB495E /* RxCocoa.framework in Copy Carthage Frameworks */,
+				62A3367D1DEA93F700BB495E /* RxSwift.framework in Copy Carthage Frameworks */,
+			);
+			name = "Copy Carthage Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		62A336771DEA935200BB495E /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		62A336791DEA935A00BB495E /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		62C98EDD1DE8478E003E2C5E /* SamplingRx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SamplingRx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C98EF11DE8478E003E2C5E /* Specs.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Specs.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C98EFC1DE8478E003E2C5E /* Features.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Features.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62A3367A1DEA935A00BB495E /* RxCocoa.framework in Frameworks */,
+				62A336781DEA935200BB495E /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,13 +97,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		62A336761DEA8DC700BB495E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				62A336791DEA935A00BB495E /* RxCocoa.framework */,
+				62A336771DEA935200BB495E /* RxSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		62C98ED41DE8478D003E2C5E = {
 			isa = PBXGroup;
 			children = (
 				62C98F241DE8482B003E2C5E /* Features */,
+				62A336761DEA8DC700BB495E /* Frameworks */,
+				62C98EDE1DE8478E003E2C5E /* Products */,
 				62C98F0E1DE84809003E2C5E /* Source */,
 				62C98F1E1DE8481E003E2C5E /* Specs */,
-				62C98EDE1DE8478E003E2C5E /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -159,6 +192,7 @@
 				62A4072B1DE90D1A0005B619 /* Lint Source */,
 				62C98ED91DE8478D003E2C5E /* Sources */,
 				62C98EDA1DE8478D003E2C5E /* Frameworks */,
+				62A3367B1DEA93E300BB495E /* Copy Carthage Frameworks */,
 				62C98EDB1DE8478D003E2C5E /* Resources */,
 			);
 			buildRules = (
@@ -454,6 +488,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GAV3HJNSJX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Source/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.g-ackt.sample.Sampling-Rx";
@@ -467,6 +505,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GAV3HJNSJX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Source/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.g-ackt.sample.Sampling-Rx";
