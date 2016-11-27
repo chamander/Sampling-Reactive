@@ -20,4 +20,16 @@ extension ObservableType where E: Collection {
 
 }
 
+extension ObservableType where E: OptionalProtocol {
+
+  func ignoringNil() -> Observable<E.Wrapped> {
+    return filter { $0.optional != nil }
+      .map {
+        guard let value = $0.optional else { fatalError() }
+        return value
+    }
+  }
+
+}
+
 import RxSwift
