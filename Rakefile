@@ -50,4 +50,3 @@ class CarthageTask < Task
 
   Bootstrap = CarthageTask.new 'bootstrap', [{'platform' => 'iphoneos'}, 'no-use-binaries']
 end
-
