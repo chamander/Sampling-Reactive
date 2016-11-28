@@ -6,7 +6,7 @@ final class PlaceholderTextViewController: UIViewController {
 
   @IBOutlet private weak var placeholderLabel: UILabel!
 
-  private var text: String = ""
+  private var text: String?
 
   convenience init(with text: String) {
     self.init()
