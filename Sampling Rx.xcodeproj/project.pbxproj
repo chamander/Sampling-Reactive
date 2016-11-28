@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		620ECA3C1DEC2CFF00A86C79 /* PlaceholderActionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 620ECA3B1DEC2CFF00A86C79 /* PlaceholderActionViewController.xib */; };
+		620ECA3E1DEC2DFD00A86C79 /* PlaceholderActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620ECA3D1DEC2DFD00A86C79 /* PlaceholderActionViewController.swift */; };
 		62A336781DEA935200BB495E /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A336771DEA935200BB495E /* RxSwift.framework */; };
 		62A3367A1DEA935A00BB495E /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A336791DEA935A00BB495E /* RxCocoa.framework */; };
 		62A3367C1DEA93F700BB495E /* RxCocoa.framework in Copy Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = 62A336791DEA935A00BB495E /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -61,6 +63,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		620ECA3B1DEC2CFF00A86C79 /* PlaceholderActionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceholderActionViewController.xib; sourceTree = "<group>"; };
+		620ECA3D1DEC2DFD00A86C79 /* PlaceholderActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderActionViewController.swift; sourceTree = "<group>"; };
 		62A336771DEA935200BB495E /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		62A336791DEA935A00BB495E /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		62A336801DEA957100BB495E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -113,6 +117,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		620ECA3A1DEC2CED00A86C79 /* PlaceholderActionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				620ECA3B1DEC2CFF00A86C79 /* PlaceholderActionViewController.xib */,
+				620ECA3D1DEC2DFD00A86C79 /* PlaceholderActionViewController.swift */,
+			);
+			path = PlaceholderActionViewController;
+			sourceTree = "<group>";
+		};
 		62A336761DEA8DC700BB495E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +182,7 @@
 		62B3DDB41DEBF51C007E653D /* Placeholders */ = {
 			isa = PBXGroup;
 			children = (
+				620ECA3A1DEC2CED00A86C79 /* PlaceholderActionViewController */,
 				62B3DDB51DEBFAA8007E653D /* PlaceholderTextViewController */,
 			);
 			path = Placeholders;
@@ -375,6 +389,7 @@
 				62C98F1B1DE84809003E2C5E /* Main.storyboard in Resources */,
 				62A336811DEA957100BB495E /* Assets.xcassets in Resources */,
 				62C98F1A1DE84809003E2C5E /* LaunchScreen.storyboard in Resources */,
+				620ECA3C1DEC2CFF00A86C79 /* PlaceholderActionViewController.xib in Resources */,
 				62B3DDB71DEBFABE007E653D /* PlaceholderTextViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,6 +432,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				620ECA3E1DEC2DFD00A86C79 /* PlaceholderActionViewController.swift in Sources */,
 				62B3DDA81DEAEFCA007E653D /* UIViewController+Rx.swift in Sources */,
 				62B3DDAD1DEB020E007E653D /* Rx+Operators.swift in Sources */,
 				62B3DDA21DEAB66F007E653D /* Transition.swift in Sources */,

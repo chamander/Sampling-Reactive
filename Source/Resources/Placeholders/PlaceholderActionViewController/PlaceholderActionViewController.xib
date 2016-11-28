@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlaceholderActionViewController" customModule="SamplingRx" customModuleProvider="target">
+            <connections>
+                <outlet property="placeholderButton" destination="vyd-Ly-I1I" id="jr6-Gg-vv9"/>
+                <outlet property="placeholderLabel" destination="xSz-Dl-yga" id="0wM-5H-Yme"/>
+                <outlet property="view" destination="iN0-l3-epB" id="WVH-9s-fcf"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="oIm-i2-pxj">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="a5x-K4-A71">
+                            <rect key="frame" x="0.0" y="308.5" width="375" height="50.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSz-Dl-yga">
+                                    <rect key="frame" x="166.5" y="0.0" width="42" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vyd-Ly-I1I">
+                                    <rect key="frame" x="164.5" y="20.5" width="46" height="30"/>
+                                    <state key="normal" title="Button"/>
+                                    <connections>
+                                        <action selector="buttonWasTapped:" destination="-1" eventType="touchUpInside" id="Mne-Yu-GGx"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="oIm-i2-pxj" secondAttribute="trailing" id="bbb-1w-Lir"/>
+                <constraint firstAttribute="bottom" secondItem="oIm-i2-pxj" secondAttribute="bottom" id="e9k-M8-v8m"/>
+                <constraint firstItem="oIm-i2-pxj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hwf-YW-ZJQ"/>
+                <constraint firstItem="oIm-i2-pxj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pKv-gi-Bio"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
