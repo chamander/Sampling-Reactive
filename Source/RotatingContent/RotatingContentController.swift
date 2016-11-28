@@ -99,7 +99,6 @@ final class RotatingContentController: UIViewController {
 
       let completion: ((Bool) -> Void) = { _ in
         source.removeFromParentViewController()
-        source.didMove(toParentViewController: nil)
         destination.didMove(toParentViewController: self)
       }
 
