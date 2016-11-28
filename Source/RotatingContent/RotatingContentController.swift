@@ -4,6 +4,26 @@ import RxCocoa
 import RxSwift
 import UIKit
 
+fileprivate var testObservable: Observable<UIViewController> {
+
+  return Observable<UIViewController>.create { observer in
+
+    let helloWorld: UIViewController = PlaceholderTextViewController(with: "Hello World!")
+    observer.onNext(helloWorld)
+
+    let fooBar: UIViewController = PlaceholderTextViewController(with: "Foo Bar?!")
+    observer.onNext(fooBar)
+
+    let quxBaz: UIViewController = PlaceholderTextViewController(with: "Qux Baz...!")
+    observer.onNext(quxBaz)
+
+    observer.onCompleted()
+    return CompositeDisposable()
+
+  }
+
+}
+
 final class RotatingContentController: UIViewController {
 
   internal var contentProducer: Observable<UIViewController?> = .empty()
@@ -16,6 +36,16 @@ final class RotatingContentController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    let nextFunction: ((Transition<UIViewController>) -> Void) = { [weak self] next in
+      self?.perform(transition: next)
+    }
+
+    contentProducer = testObservable.map(Optional.init)
+    _ = transitions
+      .observeOn(MainScheduler.asyncInstance)
+      .delayingEach(by: 3.0, on: MainScheduler.asyncInstance)
+      .subscribe(onNext: nextFunction)
   }
 
   private var _animationDuration: TimeInterval {
