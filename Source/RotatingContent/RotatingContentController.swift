@@ -4,29 +4,22 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-fileprivate var testObservable: Observable<UIViewController> {
-
-  return Observable<UIViewController>.create { observer in
-
-    let helloWorld: UIViewController = PlaceholderTextViewController(with: "Hello World!")
-    observer.onNext(helloWorld)
-
-    let fooBar: UIViewController = PlaceholderTextViewController(with: "Foo Bar?!")
-    observer.onNext(fooBar)
-
-    let quxBaz: UIViewController = PlaceholderTextViewController(with: "Qux Baz...!")
-    observer.onNext(quxBaz)
-
-    observer.onCompleted()
-    return CompositeDisposable()
-
-  }
-
-}
-
 final class RotatingContentController: UIViewController {
 
-  internal var contentProducer: Observable<UIViewController?> = .empty()
+  private weak var currentController: UIViewController? = nil
+
+  internal var contentProducer: Observable<UIViewController?> = .empty() {
+    didSet {
+      let nextFunction: ((Transition<UIViewController>) -> Void) = { [weak self] next in
+        self?.perform(transition: next)
+      }
+
+      _ = transitions
+        .observeOn(MainScheduler.asyncInstance)
+        .delayingEach(by: 2.0, on: MainScheduler.asyncInstance)
+        .subscribe(onNext: nextFunction)
+    }
+  }
 
   internal var animationDuration: TimeInterval = 0.5
 
@@ -36,16 +29,7 @@ final class RotatingContentController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    let nextFunction: ((Transition<UIViewController>) -> Void) = { [weak self] next in
-      self?.perform(transition: next)
-    }
-
-    contentProducer = testObservable.map(Optional.init)
-    _ = transitions
-      .observeOn(MainScheduler.asyncInstance)
-      .delayingEach(by: 3.0, on: MainScheduler.asyncInstance)
-      .subscribe(onNext: nextFunction)
+    contentProducer = testObservable
   }
 
   private var _animationDuration: TimeInterval {
@@ -53,10 +37,9 @@ final class RotatingContentController: UIViewController {
   }
 
   private var transitions: Observable<Transition<UIViewController>> {
-    return rx.viewDidAppear.take(1)
-      .then(observable: contentProducer)
+    return contentProducer
       .map(WeakBox.init)
-      .combiningPrevious(startingWith: WeakBox(containing: nil))
+      .combiningPrevious(startingWith: WeakBox(containing: currentController))
       .map { Transition(from: $0.value, to: $1.value) }
       .ignoringNil()
   }
@@ -74,6 +57,7 @@ final class RotatingContentController: UIViewController {
 
   private func perform(appearingTransitionTo destination: UIViewController) {
     addChildViewController(destination)
+    currentController = destination
 
     DispatchQueue.main.async {
 
@@ -109,6 +93,7 @@ final class RotatingContentController: UIViewController {
 
       let completion: ((Bool) -> Void) = { _ in
         current.removeFromParentViewController()
+        self.currentController = nil
         current.didMove(toParentViewController: nil)
       }
 
@@ -123,6 +108,7 @@ final class RotatingContentController: UIViewController {
 
   private func performTransition(from source: UIViewController, to destination: UIViewController) {
     addChildViewController(destination)
+    currentController = destination
     source.willMove(toParentViewController: nil)
 
     DispatchQueue.main.async {
@@ -140,6 +126,31 @@ final class RotatingContentController: UIViewController {
         animations: nil,
         completion: completion)
     }
+  }
+
+  private var testObservable: Observable<UIViewController?> {
+
+    return Observable<UIViewController>.create { observer in
+
+      let helloWorld: UIViewController = PlaceholderTextViewController(with: "Hello World!")
+      observer.onNext(helloWorld)
+
+      let fooBar: UIViewController = PlaceholderTextViewController(with: "Foo Bar?!")
+      observer.onNext(fooBar)
+
+      let quxBaz: UIViewController = PlaceholderTextViewController(with: "Qux Baz...!")
+      observer.onNext(quxBaz)
+
+      let restart: UIViewController = PlaceholderActionViewController(withPlaceholderText: "Lorem Ipsum.", buttonText: "Restart") { [unowned self] in
+        self.contentProducer = self.testObservable
+      }
+      observer.onNext(restart)
+
+      observer.onCompleted()
+      return CompositeDisposable()
+
+    }.map(Optional.init)
+
   }
 
 }
