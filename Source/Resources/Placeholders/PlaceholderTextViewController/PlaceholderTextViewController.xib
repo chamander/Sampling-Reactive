@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlaceholderTextViewController" customModule="SamplingRx" customModuleProvider="target">
+            <connections>
+                <outlet property="placeholderLabel" destination="V9a-kF-MY8" id="Z7p-2O-AVa"/>
+                <outlet property="view" destination="p0z-WG-hpf" id="kCP-hh-f4g"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="p0z-WG-hpf">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9a-kF-MY8">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="V9a-kF-MY8" firstAttribute="leading" secondItem="p0z-WG-hpf" secondAttribute="leading" id="IoU-78-0VM"/>
+                <constraint firstItem="V9a-kF-MY8" firstAttribute="top" secondItem="p0z-WG-hpf" secondAttribute="top" id="Ouq-P2-6Qi"/>
+                <constraint firstAttribute="trailing" secondItem="V9a-kF-MY8" secondAttribute="trailing" id="kLZ-W5-FlA"/>
+                <constraint firstAttribute="bottom" secondItem="V9a-kF-MY8" secondAttribute="bottom" id="xFg-wt-Twu"/>
+            </constraints>
+            <point key="canvasLocation" x="-257" y="-223"/>
+        </view>
+    </objects>
+</document>

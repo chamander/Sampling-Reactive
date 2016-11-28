@@ -19,6 +19,8 @@
 		62B3DDAD1DEB020E007E653D /* Rx+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B3DDAC1DEB020E007E653D /* Rx+Operators.swift */; };
 		62B3DDB11DEBA12F007E653D /* OptionalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B3DDB01DEBA12F007E653D /* OptionalProtocol.swift */; };
 		62B3DDB31DEBA43E007E653D /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B3DDB21DEBA43E007E653D /* Box.swift */; };
+		62B3DDB71DEBFABE007E653D /* PlaceholderTextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62B3DDB61DEBFABE007E653D /* PlaceholderTextViewController.xib */; };
+		62B3DDB91DEBFB7F007E653D /* PlaceholderTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B3DDB81DEBFB7F007E653D /* PlaceholderTextViewController.swift */; };
 		62C98F181DE84809003E2C5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C98F0F1DE84809003E2C5E /* AppDelegate.swift */; };
 		62C98F1A1DE84809003E2C5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C98F121DE84809003E2C5E /* LaunchScreen.storyboard */; };
 		62C98F1B1DE84809003E2C5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C98F141DE84809003E2C5E /* Main.storyboard */; };
@@ -69,6 +71,8 @@
 		62B3DDAC1DEB020E007E653D /* Rx+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rx+Operators.swift"; sourceTree = "<group>"; };
 		62B3DDB01DEBA12F007E653D /* OptionalProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalProtocol.swift; sourceTree = "<group>"; };
 		62B3DDB21DEBA43E007E653D /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		62B3DDB61DEBFABE007E653D /* PlaceholderTextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceholderTextViewController.xib; sourceTree = "<group>"; };
+		62B3DDB81DEBFB7F007E653D /* PlaceholderTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextViewController.swift; sourceTree = "<group>"; };
 		62C98EDD1DE8478E003E2C5E /* SamplingRx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SamplingRx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C98EF11DE8478E003E2C5E /* Specs.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Specs.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C98EFC1DE8478E003E2C5E /* Features.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Features.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +125,7 @@
 		62A3367F1DEA957100BB495E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				62B3DDB41DEBF51C007E653D /* Placeholders */,
 				62A336801DEA957100BB495E /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -159,6 +164,23 @@
 				62B3DDB21DEBA43E007E653D /* Box.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		62B3DDB41DEBF51C007E653D /* Placeholders */ = {
+			isa = PBXGroup;
+			children = (
+				62B3DDB51DEBFAA8007E653D /* PlaceholderTextViewController */,
+			);
+			path = Placeholders;
+			sourceTree = "<group>";
+		};
+		62B3DDB51DEBFAA8007E653D /* PlaceholderTextViewController */ = {
+			isa = PBXGroup;
+			children = (
+				62B3DDB61DEBFABE007E653D /* PlaceholderTextViewController.xib */,
+				62B3DDB81DEBFB7F007E653D /* PlaceholderTextViewController.swift */,
+			);
+			path = PlaceholderTextViewController;
 			sourceTree = "<group>";
 		};
 		62C98ED41DE8478D003E2C5E = {
@@ -353,6 +375,7 @@
 				62C98F1B1DE84809003E2C5E /* Main.storyboard in Resources */,
 				62A336811DEA957100BB495E /* Assets.xcassets in Resources */,
 				62C98F1A1DE84809003E2C5E /* LaunchScreen.storyboard in Resources */,
+				62B3DDB71DEBFABE007E653D /* PlaceholderTextViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +421,7 @@
 				62B3DDAD1DEB020E007E653D /* Rx+Operators.swift in Sources */,
 				62B3DDA21DEAB66F007E653D /* Transition.swift in Sources */,
 				62A336841DEA95BE00BB495E /* RotatingContentController.swift in Sources */,
+				62B3DDB91DEBFB7F007E653D /* PlaceholderTextViewController.swift in Sources */,
 				62B3DDA41DEAE5FF007E653D /* Fugue.swift in Sources */,
 				62B3DDB31DEBA43E007E653D /* Box.swift in Sources */,
 				62C98F181DE84809003E2C5E /* AppDelegate.swift in Sources */,
