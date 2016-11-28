@@ -27,7 +27,7 @@ extension ObservableType {
     }
   }
 
-  func delayingEach(by timeInterval: RxTimeInterval, on scheduler: SchedulerType) -> Observable<E> {
+  func spacingSamples(by timeInterval: RxTimeInterval, on scheduler: SchedulerType) -> Observable<E> {
     return Observable<E>.create { observer in
       let disposable: CompositeDisposable = CompositeDisposable()
 

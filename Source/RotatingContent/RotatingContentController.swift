@@ -12,7 +12,7 @@ final class RotatingContentController: UIViewController {
     didSet {
       _ = transitions
         .observeOn(MainScheduler.asyncInstance)
-        .delayingEach(by: 2.0, on: MainScheduler.asyncInstance)
+        .spacingSamples(by: 2.0, on: MainScheduler.asyncInstance)
         .subscribe { [weak self] in self?.perform(transition: $0) }
     }
   }
