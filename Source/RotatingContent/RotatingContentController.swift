@@ -10,14 +10,10 @@ final class RotatingContentController: UIViewController {
 
   internal var contentProducer: Observable<UIViewController?> = .empty() {
     didSet {
-      let nextFunction: ((Transition<UIViewController>) -> Void) = { [weak self] next in
-        self?.perform(transition: next)
-      }
-
       _ = transitions
         .observeOn(MainScheduler.asyncInstance)
         .delayingEach(by: 2.0, on: MainScheduler.asyncInstance)
-        .subscribe(onNext: nextFunction)
+        .subscribe { [weak self] in self?.perform(transition: $0) }
     }
   }
 
