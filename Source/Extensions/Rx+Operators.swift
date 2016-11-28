@@ -23,6 +23,42 @@ extension ObservableType {
     }
   }
 
+  func delayingEach(by timeInterval: RxTimeInterval, on scheduler: SchedulerType) -> Observable<E> {
+    return Observable<E>.create { observer in
+      let disposable: CompositeDisposable = CompositeDisposable()
+
+      var internalStorage: Array<E> = Array()
+
+      var innerObservableCompleted: Bool = false
+
+      let finishInnerObservable: (() -> Void) = {
+        if internalStorage.isEmpty { observer.onCompleted() }
+        innerObservableCompleted = true
+      }
+
+      let storeNextValue: ((E) -> Void) = {
+        // TODO: Implement synchronized access.
+        internalStorage.append($0)
+      }
+
+      _ = disposable.insert(self.subscribe(onNext: storeNextValue, onError: observer.onError, onCompleted: finishInnerObservable))
+
+      let schedulerDisposable: Disposable = scheduler.schedulePeriodic((), startAfter: 0.0, period: timeInterval) {
+        // TODO: Improve timing of first sent value to not be delayed.
+        if internalStorage.first != nil {
+          let value: E = internalStorage.removeFirst()
+          observer.onNext(value)
+        } else if innerObservableCompleted {
+          observer.onCompleted()
+        }
+      }
+
+      _ = disposable.insert(schedulerDisposable)
+
+      return disposable
+    }
+  }
+
   func combiningPrevious(startingWith initialValue: E) -> Observable<(E, E)> {
     return scan((initialValue, initialValue)) { previousPair, newValue in (previousPair.1, newValue) }
   }
