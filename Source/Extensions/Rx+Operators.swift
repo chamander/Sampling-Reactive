@@ -2,6 +2,10 @@
 
 extension ObservableType {
 
+  func subscribe(disposed: (() -> Void)? = nil, completed: (() -> Void)? = nil, error: ((Error) -> Void)? = nil, next: ((E) -> Void)? = nil) -> Disposable {
+    return subscribe(onNext: next, onError: error, onCompleted: completed, onDisposed: disposed)
+  }
+
   func then<U>(observable replacement: Observable<U>) -> Observable<U> {
     return Observable<U>.create { observer in
       let disposable: CompositeDisposable = CompositeDisposable()
