@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6206EDB81DEEEB8C00B0EC8F /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6206EDB71DEEEB8C00B0EC8F /* City.swift */; };
+		6206EDBA1DEEEBA600B0EC8F /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6206EDB91DEEEBA600B0EC8F /* Weather.swift */; };
 		620ECA3C1DEC2CFF00A86C79 /* PlaceholderActionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 620ECA3B1DEC2CFF00A86C79 /* PlaceholderActionViewController.xib */; };
 		620ECA3E1DEC2DFD00A86C79 /* PlaceholderActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620ECA3D1DEC2DFD00A86C79 /* PlaceholderActionViewController.swift */; };
 		62A336781DEA935200BB495E /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A336771DEA935200BB495E /* RxSwift.framework */; };
@@ -63,6 +65,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6206EDB71DEEEB8C00B0EC8F /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		6206EDB91DEEEBA600B0EC8F /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		620ECA3B1DEC2CFF00A86C79 /* PlaceholderActionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceholderActionViewController.xib; sourceTree = "<group>"; };
 		620ECA3D1DEC2DFD00A86C79 /* PlaceholderActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderActionViewController.swift; sourceTree = "<group>"; };
 		62A336771DEA935200BB495E /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -117,6 +121,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6206EDB61DEEEB7F00B0EC8F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6206EDB71DEEEB8C00B0EC8F /* City.swift */,
+				6206EDB91DEEEBA600B0EC8F /* Weather.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		620ECA3A1DEC2CED00A86C79 /* PlaceholderActionViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,10 +236,11 @@
 			children = (
 				62C98F0F1DE84809003E2C5E /* AppDelegate.swift */,
 				62B3DDA01DEAB663007E653D /* Common */,
-				62B3DDAF1DEBA114007E653D /* Helpers */,
 				62B3DDA61DEAEF87007E653D /* Extensions */,
-				62A336821DEA95BE00BB495E /* RotatingContent */,
+				62B3DDAF1DEBA114007E653D /* Helpers */,
+				6206EDB61DEEEB7F00B0EC8F /* Models */,
 				62A3367F1DEA957100BB495E /* Resources */,
+				62A336821DEA95BE00BB495E /* RotatingContent */,
 				62C98F111DE84809003E2C5E /* Supporting Files */,
 			);
 			path = Source;
@@ -434,11 +448,13 @@
 			files = (
 				620ECA3E1DEC2DFD00A86C79 /* PlaceholderActionViewController.swift in Sources */,
 				62B3DDA81DEAEFCA007E653D /* UIViewController+Rx.swift in Sources */,
+				6206EDB81DEEEB8C00B0EC8F /* City.swift in Sources */,
 				62B3DDAD1DEB020E007E653D /* Rx+Operators.swift in Sources */,
 				62B3DDA21DEAB66F007E653D /* Transition.swift in Sources */,
 				62A336841DEA95BE00BB495E /* RotatingContentController.swift in Sources */,
 				62B3DDB91DEBFB7F007E653D /* PlaceholderTextViewController.swift in Sources */,
 				62B3DDA41DEAE5FF007E653D /* Fugue.swift in Sources */,
+				6206EDBA1DEEEBA600B0EC8F /* Weather.swift in Sources */,
 				62B3DDB31DEBA43E007E653D /* Box.swift in Sources */,
 				62C98F181DE84809003E2C5E /* AppDelegate.swift in Sources */,
 				62B3DDB11DEBA12F007E653D /* OptionalProtocol.swift in Sources */,
