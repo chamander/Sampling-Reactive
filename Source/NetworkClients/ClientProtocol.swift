@@ -1,5 +1,6 @@
 //  Copyright © 2016 Gavan Chan. All rights reserved.
 
+import Argo
 import Foundation
 import RxCocoa
 import RxSwift
@@ -51,8 +52,8 @@ extension ClientProtocol where Endpoint: RawRepresentable, Endpoint.RawValue == 
   func json(
     for endpoint: Endpoint,
     via method: URLRequest.Method,
-    withQuery query: Dictionary<String, String>) -> Observable<Any>
+    withQuery query: Dictionary<String, String>) -> Observable<Argo.JSON>
   {
-    return session.rx.json(request: request(for: endpoint, via: method, withQuery: query))
+    return session.rx.json(request: request(for: endpoint, via: method, withQuery: query)).map(JSON.init)
   }
 }
