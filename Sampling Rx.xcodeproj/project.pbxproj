@@ -11,6 +11,12 @@
 		6206EDB81DEEEB8C00B0EC8F /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6206EDB71DEEEB8C00B0EC8F /* City.swift */; };
 		6206EDBA1DEEEBA600B0EC8F /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6206EDB91DEEEBA600B0EC8F /* Weather.swift */; };
 		6206EDBC1DEEFBAF00B0EC8F /* ClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6206EDBB1DEEFBAF00B0EC8F /* ClientProtocol.swift */; };
+		6206EDC01DEF031900B0EC8F /* Argo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6206EDBD1DEF031900B0EC8F /* Argo.framework */; };
+		6206EDC11DEF031900B0EC8F /* Curry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6206EDBE1DEF031900B0EC8F /* Curry.framework */; };
+		6206EDC21DEF031900B0EC8F /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6206EDBF1DEF031900B0EC8F /* Runes.framework */; };
+		6206EDC31DEF032F00B0EC8F /* Argo.framework in Copy Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = 6206EDBD1DEF031900B0EC8F /* Argo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6206EDC41DEF032F00B0EC8F /* Curry.framework in Copy Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = 6206EDBE1DEF031900B0EC8F /* Curry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6206EDC51DEF032F00B0EC8F /* Runes.framework in Copy Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = 6206EDBF1DEF031900B0EC8F /* Runes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		620ECA3C1DEC2CFF00A86C79 /* PlaceholderActionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 620ECA3B1DEC2CFF00A86C79 /* PlaceholderActionViewController.xib */; };
 		620ECA3E1DEC2DFD00A86C79 /* PlaceholderActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620ECA3D1DEC2DFD00A86C79 /* PlaceholderActionViewController.swift */; };
 		62A336781DEA935200BB495E /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A336771DEA935200BB495E /* RxSwift.framework */; };
@@ -58,6 +64,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				6206EDC31DEF032F00B0EC8F /* Argo.framework in Copy Carthage Frameworks */,
+				6206EDC41DEF032F00B0EC8F /* Curry.framework in Copy Carthage Frameworks */,
+				6206EDC51DEF032F00B0EC8F /* Runes.framework in Copy Carthage Frameworks */,
 				62A3367C1DEA93F700BB495E /* RxCocoa.framework in Copy Carthage Frameworks */,
 				62A3367D1DEA93F700BB495E /* RxSwift.framework in Copy Carthage Frameworks */,
 			);
@@ -71,6 +80,9 @@
 		6206EDB71DEEEB8C00B0EC8F /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		6206EDB91DEEEBA600B0EC8F /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		6206EDBB1DEEFBAF00B0EC8F /* ClientProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientProtocol.swift; sourceTree = "<group>"; };
+		6206EDBD1DEF031900B0EC8F /* Argo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Argo.framework; path = Carthage/Build/iOS/Argo.framework; sourceTree = "<group>"; };
+		6206EDBE1DEF031900B0EC8F /* Curry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Curry.framework; path = Carthage/Build/iOS/Curry.framework; sourceTree = "<group>"; };
+		6206EDBF1DEF031900B0EC8F /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = Carthage/Build/iOS/Runes.framework; sourceTree = "<group>"; };
 		620ECA3B1DEC2CFF00A86C79 /* PlaceholderActionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceholderActionViewController.xib; sourceTree = "<group>"; };
 		620ECA3D1DEC2DFD00A86C79 /* PlaceholderActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderActionViewController.swift; sourceTree = "<group>"; };
 		62A336771DEA935200BB495E /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -103,8 +115,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6206EDC11DEF031900B0EC8F /* Curry.framework in Frameworks */,
 				62A3367A1DEA935A00BB495E /* RxCocoa.framework in Frameworks */,
 				62A336781DEA935200BB495E /* RxSwift.framework in Frameworks */,
+				6206EDC21DEF031900B0EC8F /* Runes.framework in Frameworks */,
+				6206EDC01DEF031900B0EC8F /* Argo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +170,9 @@
 		62A336761DEA8DC700BB495E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6206EDBD1DEF031900B0EC8F /* Argo.framework */,
+				6206EDBE1DEF031900B0EC8F /* Curry.framework */,
+				6206EDBF1DEF031900B0EC8F /* Runes.framework */,
 				62A336791DEA935A00BB495E /* RxCocoa.framework */,
 				62A336771DEA935200BB495E /* RxSwift.framework */,
 			);
