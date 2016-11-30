@@ -1,5 +1,6 @@
 //  Copyright © 2016 Gavan Chan. All rights reserved.
 
+import Argo
 import Foundation
 import RxCocoa
 import RxSwift
@@ -14,7 +15,7 @@ fileprivate let cities: Array<City> = [
   (7839402, "Darwin"),
 ].map(City.init)
 
-final class WeatherClient {
+final class WeatherClient: ClientProtocol {
 
   enum Metric {
     case celsius
@@ -32,10 +33,28 @@ final class WeatherClient {
     }
   }
 
+  enum Endpoint: String {
+    case weather = "weather"
+  }
+
+  let session: URLSession = .shared
+  var base: URL { return URL(string: baseURL)! }
+
+  private let baseURL: String = "http://api.openweathermap.org/data/2.5"
+
   var metric: Metric = .celsius
 
   func weather(for cityID: City.Identifier) -> Observable<Weather> {
-    return .empty()
+    let query: Dictionary<String, String> = [
+      "id": "7839805",
+      "APPID": "402c2de16506bb59c7a6afc8b60778c2",
+      "units": "metric",
+    ]
+    let weather: Observable<Weather> = json(for: .weather, via: .get, withQuery: query)
+      .map(Weather.decode)
+      .map { $0.value! }
+
+    return weather
   }
 
 }
