@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -26,7 +27,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1782" y="793"/>
+            <point key="canvasLocation" x="1660" y="1553"/>
         </scene>
         <!--Item-->
         <scene sceneID="tr9-iv-fjB">
@@ -45,7 +46,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hYC-oC-FSc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="863.20000000000005" y="792.95352323838085"/>
+            <point key="canvasLocation" x="742" y="1553"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="GaT-wt-gOb">
@@ -53,16 +54,71 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="17Q-25-EJx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="ccL-yx-QUp">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="cVG-12-gYE" kind="relationship" relationship="viewControllers" id="6dU-Xy-h3C"/>
+                        <segue destination="ppN-3L-NJD" kind="relationship" relationship="viewControllers" id="LYI-6X-v6P"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NqD-tl-5ak" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-76" y="792.95352323838085"/>
+        </scene>
+        <!--Weather View Controller-->
+        <scene sceneID="eso-kC-aEX">
+            <objects>
+                <viewController id="ppN-3L-NJD" userLabel="Weather View Controller" customClass="WeatherViewController" customModule="SamplingRx" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Sko-7g-3eT"/>
+                        <viewControllerLayoutGuide type="bottom" id="oBH-uX-ffa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bPL-FJ-pY3" customClass="WeatherView" customModule="SamplingRx" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YEu-eA-WhI">
+                                <rect key="frame" x="16" y="20" width="343" height="598"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YTl-8R-hTl">
+                                        <rect key="frame" x="0.0" y="270.5" width="343" height="57"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gt-Lx-ety">
+                                                <rect key="frame" x="97.5" y="0.0" width="148.5" height="26.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byt-Dv-Uj1">
+                                                <rect key="frame" x="93.5" y="36.5" width="156" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YEu-eA-WhI" firstAttribute="top" secondItem="Sko-7g-3eT" secondAttribute="bottom" id="JtV-2d-OAX"/>
+                            <constraint firstItem="YEu-eA-WhI" firstAttribute="leading" secondItem="bPL-FJ-pY3" secondAttribute="leadingMargin" id="K0A-y5-h2y"/>
+                            <constraint firstItem="oBH-uX-ffa" firstAttribute="top" secondItem="YEu-eA-WhI" secondAttribute="bottom" id="fme-TT-Mr0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YEu-eA-WhI" secondAttribute="trailing" id="s0T-cb-uf0"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="xCb-Sx-A82"/>
+                    <connections>
+                        <outlet property="locationLabel" destination="6gt-Lx-ety" id="kuv-qJ-cdI"/>
+                        <outlet property="weatherInformationLabel" destination="byt-Dv-Uj1" id="bbd-RM-Atx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oEo-02-OL0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="742" y="793"/>
         </scene>
     </scenes>
 </document>

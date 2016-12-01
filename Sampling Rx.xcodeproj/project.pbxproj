@@ -42,8 +42,7 @@
 		62C98F281DE8482B003E2C5E /* Sampling_RxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C98F251DE8482B003E2C5E /* Sampling_RxUITests.swift */; };
 		62F1ED351DF01BF000569A62 /* WeatherClientStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1ED341DF01BF000569A62 /* WeatherClientStub.swift */; };
 		62F1ED381DF01F7D00569A62 /* WeatherProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1ED371DF01F7D00569A62 /* WeatherProviding.swift */; };
-		62F1ED3B1DF0D18300569A62 /* PlaceholderWeatherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62F1ED3A1DF0D18300569A62 /* PlaceholderWeatherViewController.xib */; };
-		62F1ED3D1DF0D19400569A62 /* PlaceholderWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1ED3C1DF0D19400569A62 /* PlaceholderWeatherViewController.swift */; };
+		62F1ED401DF0E13900569A62 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1ED3F1DF0E13900569A62 /* WeatherViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,8 +117,7 @@
 		62C98F271DE8482B003E2C5E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62F1ED341DF01BF000569A62 /* WeatherClientStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherClientStub.swift; sourceTree = "<group>"; };
 		62F1ED371DF01F7D00569A62 /* WeatherProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherProviding.swift; sourceTree = "<group>"; };
-		62F1ED3A1DF0D18300569A62 /* PlaceholderWeatherViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceholderWeatherViewController.xib; sourceTree = "<group>"; };
-		62F1ED3C1DF0D19400569A62 /* PlaceholderWeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderWeatherViewController.swift; sourceTree = "<group>"; };
+		62F1ED3F1DF0E13900569A62 /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,7 +240,6 @@
 		62B3DDB41DEBF51C007E653D /* Placeholders */ = {
 			isa = PBXGroup;
 			children = (
-				62F1ED391DF0D16900569A62 /* PlaceholderWeatherViewController */,
 				620ECA3A1DEC2CED00A86C79 /* PlaceholderActionViewController */,
 				62B3DDB51DEBFAA8007E653D /* PlaceholderTextViewController */,
 			);
@@ -291,6 +288,7 @@
 				62A3367F1DEA957100BB495E /* Resources */,
 				62A336821DEA95BE00BB495E /* RotatingContent */,
 				62C98F111DE84809003E2C5E /* Supporting Files */,
+				62F1ED3E1DF0E13900569A62 /* WeatherContent */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -355,13 +353,12 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		62F1ED391DF0D16900569A62 /* PlaceholderWeatherViewController */ = {
+		62F1ED3E1DF0E13900569A62 /* WeatherContent */ = {
 			isa = PBXGroup;
 			children = (
-				62F1ED3A1DF0D18300569A62 /* PlaceholderWeatherViewController.xib */,
-				62F1ED3C1DF0D19400569A62 /* PlaceholderWeatherViewController.swift */,
+				62F1ED3F1DF0E13900569A62 /* WeatherViewController.swift */,
 			);
-			path = PlaceholderWeatherViewController;
+			path = WeatherContent;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -475,7 +472,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				62C98F1B1DE84809003E2C5E /* Main.storyboard in Resources */,
-				62F1ED3B1DF0D18300569A62 /* PlaceholderWeatherViewController.xib in Resources */,
 				62A336811DEA957100BB495E /* Assets.xcassets in Resources */,
 				62C98F1A1DE84809003E2C5E /* LaunchScreen.storyboard in Resources */,
 				620ECA3C1DEC2CFF00A86C79 /* PlaceholderActionViewController.xib in Resources */,
@@ -533,7 +529,7 @@
 				62B3DDB91DEBFB7F007E653D /* PlaceholderTextViewController.swift in Sources */,
 				62B3DDA41DEAE5FF007E653D /* Fugue.swift in Sources */,
 				6206EDBA1DEEEBA600B0EC8F /* Weather.swift in Sources */,
-				62F1ED3D1DF0D19400569A62 /* PlaceholderWeatherViewController.swift in Sources */,
+				62F1ED401DF0E13900569A62 /* WeatherViewController.swift in Sources */,
 				62B3DDB31DEBA43E007E653D /* Box.swift in Sources */,
 				62F1ED381DF01F7D00569A62 /* WeatherProviding.swift in Sources */,
 				62C98F181DE84809003E2C5E /* AppDelegate.swift in Sources */,

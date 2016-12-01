@@ -2,14 +2,14 @@
 
 import UIKit
 
-final class PlaceholderWeatherViewController: UIViewController {
+final class WeatherViewController: UIViewController {
 
   @IBOutlet private weak var locationLabel: UILabel!
   @IBOutlet private weak var weatherInformationLabel: UILabel!
 
 }
 
-final class PlaceholderWeatherView: UIView {
+final class WeatherView: UIView {
 
   enum Theme {
     case blistering
@@ -17,7 +17,7 @@ final class PlaceholderWeatherView: UIView {
     case neutral
     case cold
 
-    var gradientColors: (light: UIColor, dark: UIColor) {
+    var gradientColors: (top: UIColor, bottom: UIColor) {
       switch self {
       case .blistering:
         return (.init(rgb: (254, 229, 207)), .init(rgb: (253, 191, 132)))
@@ -35,7 +35,7 @@ final class PlaceholderWeatherView: UIView {
 
 }
 
-struct PlaceholderWeatherViewModel {
+struct WeatherViewModel {
 
 }
 
