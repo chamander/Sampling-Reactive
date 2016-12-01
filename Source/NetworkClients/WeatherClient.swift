@@ -21,7 +21,6 @@ final class WeatherClient: WeatherProvidingClient {
   func weather(for cityID: City.Identifier, in unit: UnitTemperature = .celsius) -> Observable<Weather> {
     var query: Dictionary<String, String> = [
       "id": String(reflecting: cityID),
-      "APPID": "402c2de16506bb59c7a6afc8b60778c2",
     ]
     if let unit = unit.requestParameter { query.updateValue(unit, forKey: "units") }
 

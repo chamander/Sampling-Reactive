@@ -5,6 +5,8 @@ import Foundation
 import RxCocoa
 import RxSwift
 
+fileprivate let apiKey: String = "402c2de16506bb59c7a6afc8b60778c2"
+
 extension URLRequest {
   typealias Response = (HTTPURLResponse, Data)
 
@@ -32,12 +34,16 @@ extension ClientProtocol where Endpoint: RawRepresentable, Endpoint.RawValue == 
     withQuery query: Dictionary<String, String>) -> URLRequest
   {
     var url: URL = base.appendingPathComponent(endpoint.rawValue)
+
     if var components: URLComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) {
+      var query: Dictionary<String, String> = query
+      query.updateValue(apiKey, forKey: "APPID") // Insert the key required by the API
       components.query = query.reduce(String()) { accum, next in
         "\(accum)\(next.key)=\(next.value)&"
       }
       url = components.url!
     }
+
     return URLRequest(url: url)
   }
 
