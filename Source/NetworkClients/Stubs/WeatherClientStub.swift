@@ -17,25 +17,26 @@ final class WeatherClientStub: WeatherProviding {
   func weather(for cityID: City.Identifier, in metric: UnitTemperature) -> Observable<Weather> {
     let matchingCityID: ((City) -> Bool) = { $0.identifier == cityID }
 
-    guard let city = WeatherClientStub.cities.first(where: matchingCityID) else {
-      return Observable<Weather>.create { observer in
-        DispatchQueue.global(qos: .default).asyncAfter(deadline: DispatchTime(uptimeNanoseconds: 2000000)) {
-          observer.onNext(WeatherClientStub.dummyWeatherData(for: metric))
-          observer.onCompleted()
-        }
-        return Disposables.create()
-      }
+    let city: City
+
+    if let _city = WeatherClientStub.cities.first(where: matchingCityID) {
+      city = _city
+    } else {
+      city = City(identifier: 10, name: "Unknown City")
     }
 
-    return .empty()
-  }
+    return Observable<Weather>.create { observer in
+      DispatchQueue.global().asyncAfter(deadline: .now() + .seconds(2)) {
+        let seed: Double = Double(city.identifier)
+        let temperature: Measurement<UnitTemperature> = Measurement(value: seed.remainder(dividingBy: 14.0) + 14.0, unit: .celsius)
 
-  private static func dummyWeatherData(for unit: UnitTemperature) -> Weather {
-    let city: City = City(identifier: 0, name: "Unknown City")
-    let measurement: Measurement<UnitTemperature> = Measurement(value: 24.0, unit: .celsius)
-    let cloudiness: Percentage = 50.0
+        let data: Weather = Weather(city: city, current: temperature.converted(to: metric).value, cloudiness: seed.remainder(dividingBy: 94.0))
 
-    return Weather(city: city, current: measurement.converted(to: unit).value, cloudiness: cloudiness)
+        observer.onNext(data)
+        observer.onCompleted()
+      }
+      return Disposables.create()
+    }
   }
 
   private init() { }
