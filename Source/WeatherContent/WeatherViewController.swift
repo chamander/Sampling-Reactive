@@ -16,19 +16,6 @@ final class WeatherView: UIView {
     case hot
     case neutral
     case cold
-
-    var gradientColors: (top: UIColor, bottom: UIColor) {
-      switch self {
-      case .blistering:
-        return (.init(rgb: (254, 229, 207)), .init(rgb: (253, 191, 132)))
-      case .hot:
-        return (.init(rgb: (254, 212, 171)), .init(rgb: (255, 240, 233)))
-      case .neutral:
-        return (.init(rgb: (226, 232, 254)), .init(rgb: (255, 249, 255)))
-      case .cold:
-        return (.init(rgb: (253, 194, 164)), .init(rgb: (226, 232, 254)))
-      }
-    }
   }
 
   override static var layerClass: AnyClass { return CAGradientLayer.self }
@@ -60,6 +47,21 @@ struct WeatherViewModel {
     }
   }
 
+}
+
+fileprivate extension WeatherView.Theme {
+  var gradientColors: (top: UIColor, bottom: UIColor) {
+    switch self {
+    case .blistering:
+      return (.init(rgb: (254, 229, 207)), .init(rgb: (253, 191, 132)))
+    case .hot:
+      return (.init(rgb: (254, 212, 171)), .init(rgb: (255, 240, 233)))
+    case .neutral:
+      return (.init(rgb: (226, 232, 254)), .init(rgb: (255, 249, 255)))
+    case .cold:
+      return (.init(rgb: (253, 194, 164)), .init(rgb: (226, 232, 254)))
+    }
+  }
 }
 
 fileprivate extension UIColor {
