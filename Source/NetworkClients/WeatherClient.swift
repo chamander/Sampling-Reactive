@@ -18,12 +18,12 @@ final class WeatherClient: WeatherProvidingClient {
 
   private let baseURL: String = "http://api.openweathermap.org/data/2.5"
 
-  func weather(for cityID: City.Identifier, in metric: UnitTemperature = .celsius) -> Observable<Weather> {
+  func weather(for cityID: City.Identifier, in unit: UnitTemperature = .celsius) -> Observable<Weather> {
     var query: Dictionary<String, String> = [
       "id": String(reflecting: cityID),
       "APPID": "402c2de16506bb59c7a6afc8b60778c2",
     ]
-    if let metric = metric.requestParameter { query.updateValue(metric, forKey: "units") }
+    if let unit = unit.requestParameter { query.updateValue(unit, forKey: "units") }
 
     let weather: Observable<Weather> = json(for: .weather, via: .get, withQuery: query)
       .map(Weather.decode)

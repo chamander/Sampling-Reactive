@@ -14,7 +14,7 @@ final class WeatherClientStub: WeatherProviding {
     (7839402, "Darwin"),
   ].map(City.init)
 
-  func weather(for cityID: City.Identifier, in metric: UnitTemperature) -> Observable<Weather> {
+  func weather(for cityID: City.Identifier, in unit: UnitTemperature) -> Observable<Weather> {
     let matchingCityID: ((City) -> Bool) = { $0.identifier == cityID }
 
     let city: City
@@ -30,7 +30,7 @@ final class WeatherClientStub: WeatherProviding {
         let seed: Double = Double(city.identifier)
         let temperature: Measurement<UnitTemperature> = Measurement(value: seed.remainder(dividingBy: 14.0) + 14.0, unit: .celsius)
 
-        let data: Weather = Weather(city: city, current: temperature.converted(to: metric).value, cloudiness: seed.remainder(dividingBy: 94.0))
+        let data: Weather = Weather(city: city, current: temperature.converted(to: unit).value, cloudiness: seed.remainder(dividingBy: 94.0))
 
         observer.onNext(data)
         observer.onCompleted()
