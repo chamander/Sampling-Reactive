@@ -5,6 +5,8 @@ import Foundation
 import RxCocoa
 import RxSwift
 
+typealias WeatherProvidingClient = ClientProtocol & WeatherProviding
+
 fileprivate let cities: Array<City> = [
   (7839805, "Melbourne"),
   (2147714, "Sydney"),
@@ -15,7 +17,7 @@ fileprivate let cities: Array<City> = [
   (7839402, "Darwin"),
 ].map(City.init)
 
-final class WeatherClient: ClientProtocol {
+final class WeatherClient: WeatherProvidingClient {
 
   enum Endpoint: String {
     case weather = "weather"
