@@ -1,6 +1,22 @@
 //  Copyright © 2016 Gavan Chan. All rights reserved.
 
+import Argo
+import RxSwift
+
 extension ObservableType {
+
+  // MARK: "Initialisers"
+
+  static func from<Element>(decoded: Argo.Decoded<Element>) -> Observable<Element> {
+    switch decoded {
+    case let .success(value):
+      return Observable<Element>.just(value)
+    case let .failure(error):
+      return Observable<Element>.error(error)
+    }
+  }
+
+  // MARK: Operators
 
   func subscribe(disposed: (() -> Void)? = nil, completed: (() -> Void)? = nil, error: ((Error) -> Void)? = nil, next: ((E) -> Void)? = nil) -> Disposable {
     return subscribe(onNext: next, onError: error, onCompleted: completed, onDisposed: disposed)
@@ -100,5 +116,3 @@ extension ObservableType where E: OptionalProtocol {
   }
 
 }
-
-import RxSwift

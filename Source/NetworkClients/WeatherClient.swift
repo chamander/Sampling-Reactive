@@ -27,7 +27,7 @@ final class WeatherClient: WeatherProvidingClient {
 
     let weather: Observable<Weather> = json(for: .weather, via: .get, withQuery: query)
       .map(Weather.decode)
-      .map { $0.value! }
+      .flatMap { Observable<Weather>.from(decoded: $0) }
 
     return weather
   }
