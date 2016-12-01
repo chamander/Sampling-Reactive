@@ -17,22 +17,6 @@ fileprivate let cities: Array<City> = [
 
 final class WeatherClient: ClientProtocol {
 
-  enum Metric {
-    case celsius
-    case fahrenheit
-    case kelvin
-
-    var requestParameter: String? {
-      let value: String?
-      switch self {
-      case .celsius: value = "metric"
-      case .fahrenheit: value = "imperial"
-      case .kelvin: value = nil
-      }
-      return value.flatMap { "units=\($0)" }
-    }
-  }
-
   enum Endpoint: String {
     case weather = "weather"
   }
@@ -42,14 +26,13 @@ final class WeatherClient: ClientProtocol {
 
   private let baseURL: String = "http://api.openweathermap.org/data/2.5"
 
-  var metric: Metric = .celsius
-
-  func weather(for cityID: City.Identifier) -> Observable<Weather> {
-    let query: Dictionary<String, String> = [
-      "id": "7839805",
+  func weather(for cityID: City.Identifier, in metric: UnitTemperature = .celsius) -> Observable<Weather> {
+    var query: Dictionary<String, String> = [
+      "id": String(reflecting: cityID),
       "APPID": "402c2de16506bb59c7a6afc8b60778c2",
-      "units": "metric",
     ]
+    if let metric = metric.requestParameter { query.updateValue(metric, forKey: "units") }
+
     let weather: Observable<Weather> = json(for: .weather, via: .get, withQuery: query)
       .map(Weather.decode)
       .map { $0.value! }
@@ -57,4 +40,15 @@ final class WeatherClient: ClientProtocol {
     return weather
   }
 
+}
+
+fileprivate extension UnitTemperature {
+  var requestParameter: String? {
+    switch self {
+    case UnitTemperature.celsius: return "metric"
+    case UnitTemperature.fahrenheit: return "imperial"
+    case UnitTemperature.kelvin: return nil
+    default: return nil
+    }
+  }
 }
