@@ -4,6 +4,9 @@ import UIKit
 
 final class PlaceholderWeatherViewController: UIViewController {
 
+  @IBOutlet private weak var locationLabel: UILabel!
+  @IBOutlet private weak var weatherInformationLabel: UILabel!
+
 }
 
 final class PlaceholderWeatherView: UIView {
