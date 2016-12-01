@@ -32,18 +32,10 @@ final class WeatherClientStub: WeatherProviding {
 
   private static func dummyWeatherData(for unit: UnitTemperature) -> Weather {
     let city: City = City(identifier: 0, name: "Unknown City")
-
-    let temperature: Temperature
-    switch unit {
-    case UnitTemperature.celsius: temperature = 24.0
-    case UnitTemperature.fahrenheit: temperature = 75.2
-    case UnitTemperature.kelvin: temperature = 273.15
-    default: temperature = 0.0
-    }
-
+    let measurement: Measurement<UnitTemperature> = Measurement(value: 24.0, unit: .celsius)
     let cloudiness: Percentage = 50.0
 
-    return Weather(city: city, current: temperature, cloudiness: cloudiness)
+    return Weather(city: city, current: measurement.converted(to: unit).value, cloudiness: cloudiness)
   }
 
   private init() { }
