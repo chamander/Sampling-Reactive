@@ -40,6 +40,7 @@
 		62C98F1B1DE84809003E2C5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C98F141DE84809003E2C5E /* Main.storyboard */; };
 		62C98F221DE8481E003E2C5E /* Sampling_RxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C98F1F1DE8481E003E2C5E /* Sampling_RxTests.swift */; };
 		62C98F281DE8482B003E2C5E /* Sampling_RxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C98F251DE8482B003E2C5E /* Sampling_RxUITests.swift */; };
+		62F1ED351DF01BF000569A62 /* WeatherClientStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1ED341DF01BF000569A62 /* WeatherClientStub.swift */; };
 		62F1ED381DF01F7D00569A62 /* WeatherProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1ED371DF01F7D00569A62 /* WeatherProviding.swift */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +114,7 @@
 		62C98F211DE8481E003E2C5E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62C98F251DE8482B003E2C5E /* Sampling_RxUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sampling_RxUITests.swift; sourceTree = "<group>"; };
 		62C98F271DE8482B003E2C5E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62F1ED341DF01BF000569A62 /* WeatherClientStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherClientStub.swift; sourceTree = "<group>"; };
 		62F1ED371DF01F7D00569A62 /* WeatherProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherProviding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				62F1ED361DF01F5C00569A62 /* Protocols */,
+				62F1ED331DF01BE300569A62 /* Stubs */,
 				6206EDB41DEEE60000B0EC8F /* WeatherClient.swift */,
 				6206EDBB1DEEFBAF00B0EC8F /* ClientProtocol.swift */,
 			);
@@ -329,6 +332,14 @@
 				62C98F271DE8482B003E2C5E /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		62F1ED331DF01BE300569A62 /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				62F1ED341DF01BF000569A62 /* WeatherClientStub.swift */,
+			);
+			path = Stubs;
 			sourceTree = "<group>";
 		};
 		62F1ED361DF01F5C00569A62 /* Protocols */ = {
@@ -503,6 +514,7 @@
 				62C65CD11DEF087C000D1DF0 /* Forecast.swift in Sources */,
 				62B3DDA21DEAB66F007E653D /* Transition.swift in Sources */,
 				62A336841DEA95BE00BB495E /* RotatingContentController.swift in Sources */,
+				62F1ED351DF01BF000569A62 /* WeatherClientStub.swift in Sources */,
 				62B3DDB91DEBFB7F007E653D /* PlaceholderTextViewController.swift in Sources */,
 				62B3DDA41DEAE5FF007E653D /* Fugue.swift in Sources */,
 				6206EDBA1DEEEBA600B0EC8F /* Weather.swift in Sources */,

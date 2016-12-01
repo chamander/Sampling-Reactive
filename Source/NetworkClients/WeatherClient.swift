@@ -7,16 +7,6 @@ import RxSwift
 
 typealias WeatherProvidingClient = ClientProtocol & WeatherProviding
 
-fileprivate let cities: Array<City> = [
-  (7839805, "Melbourne"),
-  (2147714, "Sydney"),
-  (2063523, "Perth"),
-  (2078025, "Adelaide"),
-  (7839562, "Brisbane"),
-  (2163355, "Hobart"),
-  (7839402, "Darwin"),
-].map(City.init)
-
 final class WeatherClient: WeatherProvidingClient {
 
   enum Endpoint: String {
