@@ -79,6 +79,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="SOc-ea-Ov9">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                            </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YEu-eA-WhI">
                                 <rect key="frame" x="16" y="20" width="343" height="598"/>
                                 <subviews>
@@ -106,14 +109,18 @@
                         <constraints>
                             <constraint firstItem="YEu-eA-WhI" firstAttribute="top" secondItem="Sko-7g-3eT" secondAttribute="bottom" id="JtV-2d-OAX"/>
                             <constraint firstItem="YEu-eA-WhI" firstAttribute="leading" secondItem="bPL-FJ-pY3" secondAttribute="leadingMargin" id="K0A-y5-h2y"/>
+                            <constraint firstItem="SOc-ea-Ov9" firstAttribute="centerY" secondItem="bPL-FJ-pY3" secondAttribute="centerY" id="SUi-6I-5SJ"/>
                             <constraint firstItem="oBH-uX-ffa" firstAttribute="top" secondItem="YEu-eA-WhI" secondAttribute="bottom" id="fme-TT-Mr0"/>
+                            <constraint firstItem="SOc-ea-Ov9" firstAttribute="centerX" secondItem="bPL-FJ-pY3" secondAttribute="centerX" id="rGd-nU-amm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YEu-eA-WhI" secondAttribute="trailing" id="s0T-cb-uf0"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="xCb-Sx-A82"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="SOc-ea-Ov9" id="zVZ-xy-ftD"/>
                         <outlet property="locationLabel" destination="6gt-Lx-ety" id="kuv-qJ-cdI"/>
                         <outlet property="weatherInformationLabel" destination="byt-Dv-Uj1" id="bbd-RM-Atx"/>
+                        <outlet property="weatherView" destination="bPL-FJ-pY3" id="RMk-pL-ApX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oEo-02-OL0" userLabel="First Responder" sceneMemberID="firstResponder"/>

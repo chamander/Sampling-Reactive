@@ -6,6 +6,8 @@ final class WeatherViewController: UIViewController {
 
   @IBOutlet private weak var locationLabel: UILabel!
   @IBOutlet private weak var weatherInformationLabel: UILabel!
+  @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+  @IBOutlet private var weatherView: WeatherView!
 
 }
 
