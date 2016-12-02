@@ -14,7 +14,7 @@ final class WeatherClientStub: WeatherProviding {
     (7839402, "Darwin"),
   ].map(City.init)
 
-  func weather(for cityID: City.Identifier, in unit: UnitTemperature) -> Observable<Weather> {
+  func weather(for cityID: City.Identifier, in unit: UnitTemperature = .celsius) -> Observable<Weather> {
     let matchingCityID: ((City) -> Bool) = { $0.identifier == cityID }
 
     let city: City
