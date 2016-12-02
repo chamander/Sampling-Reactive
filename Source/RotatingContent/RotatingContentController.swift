@@ -8,12 +8,24 @@ final class RotatingContentController: UIViewController {
 
   private weak var currentController: UIViewController? = nil
 
+  private let disposables: CompositeDisposable = CompositeDisposable()
+
+  private var transitionDisposableKey: CompositeDisposable.DisposeKey? = nil
+
+  deinit { disposables.dispose() }
+
   internal var contentProducer: Observable<UIViewController?> = .empty() {
     didSet {
-      _ = transitions
+      if let current: UIViewController = currentController { perform(transition: .disappearing(current)) }
+
+      if let key: CompositeDisposable.DisposeKey = transitionDisposableKey { disposables.remove(for: key) }
+
+      let disposable: Disposable = transitions
         .observeOn(MainScheduler.asyncInstance)
         .spacingSamples(by: 2.0, on: MainScheduler.asyncInstance)
         .subscribe { [weak self] in self?.perform(transition: $0) }
+
+      transitionDisposableKey = disposables.insert(disposable)
     }
   }
 
