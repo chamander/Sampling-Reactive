@@ -16,8 +16,6 @@ final class RotatingContentController: UIViewController {
 
   internal var contentProducer: Observable<UIViewController?> = .empty() {
     didSet {
-      if let current: UIViewController = currentController { perform(transition: .disappearing(current)) }
-
       if let key: CompositeDisposable.DisposeKey = transitionDisposableKey { disposables.remove(for: key) }
 
       let disposable: Disposable = transitions
