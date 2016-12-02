@@ -34,10 +34,7 @@ struct WeatherViewModel {
 
   var location: City.Name { return data.city.name }
 
-  var information: String {
-    let currentTemperature: String = String(reflecting: data.current)
-    return String(format: "Current: %.2f", currentTemperature)
-  }
+  var information: String { return String(format: "Current: %.1fºC", data.current) }
 
   var theme: WeatherView.Theme! {
     switch data.current {
