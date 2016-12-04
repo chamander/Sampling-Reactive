@@ -1,5 +1,6 @@
 //  Copyright © 2016 Gavan Chan. All rights reserved.
 
+import Foundation
 import RxCocoa
 import RxSwift
 import UIKit
@@ -20,7 +21,6 @@ final class RotatingContentController: UIViewController {
 
       let disposable: Disposable = transitions
         .observeOn(MainScheduler.asyncInstance)
-        .spacingSamples(by: 2.0, on: MainScheduler.asyncInstance)
         .subscribe { [weak self] in self?.perform(transition: $0) }
 
       transitionDisposableKey = disposables.insert(disposable)
@@ -138,22 +138,39 @@ final class RotatingContentController: UIViewController {
 
     return Observable<UIViewController>.create { observer in
 
-      let helloWorld: UIViewController = PlaceholderTextViewController(with: "Hello World!")
-      observer.onNext(helloWorld)
+      var disposed: Bool = false
 
-      let fooBar: UIViewController = PlaceholderTextViewController(with: "Foo Bar?!")
-      observer.onNext(fooBar)
-
-      let quxBaz: UIViewController = PlaceholderTextViewController(with: "Qux Baz...!")
-      observer.onNext(quxBaz)
-
-      let restart: UIViewController = PlaceholderActionViewController(withPlaceholderText: "Lorem Ipsum.", buttonText: "Restart") { [unowned self] in
-        self.contentProducer = self.testObservable
+      func dispatch(_ work: @escaping (() -> Void)) {
+        if !disposed { DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: work) }
       }
-      observer.onNext(restart)
 
-      observer.onCompleted()
-      return CompositeDisposable()
+      let restart: (() -> Void) = {
+        let restart: UIViewController = PlaceholderActionViewController(withPlaceholderText: "Lorem Ipsum.", buttonText: "Restart") { [unowned self] in
+          self.contentProducer = self.testObservable
+        }
+        observer.onNext(restart)
+        observer.onCompleted()
+      }
+
+      let quxBaz: (() -> Void) = {
+        let quxBaz: UIViewController = PlaceholderTextViewController(with: "Qux Baz...!")
+        observer.onNext(quxBaz)
+        dispatch(restart)
+      }
+
+      let fooBar: (() -> Void) = {
+        let fooBar: UIViewController = PlaceholderTextViewController(with: "Foo Bar?!")
+        observer.onNext(fooBar)
+        dispatch(quxBaz)
+      }
+
+      DispatchQueue.main.async {
+        let helloWorld: UIViewController = PlaceholderTextViewController(with: "Hello World!")
+        observer.onNext(helloWorld)
+        dispatch(fooBar)
+      }
+
+      return Disposables.create { disposed = true }
 
     }.map(Optional.init)
 
