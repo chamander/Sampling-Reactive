@@ -24,32 +24,21 @@ final class WeatherView: UIView {
     }
   }
 
-  private var gradient: CAGradientLayer?
-
   var theme: Theme? {
 
     didSet {
 
       let animation: (() -> Void)
 
+      guard let existing: CAGradientLayer = layer as? CAGradientLayer else { fatalError("Class must match `static var layerClass`.") }
+
       if let theme = theme {
 
         let colors: (top: UIColor, bottom: UIColor) = theme.gradientColors
 
-        if let existing: CAGradientLayer = gradient {
-          animation = {
-            existing.colors = [colors.top.cgColor, colors.bottom.cgColor]
-          }
-        } else {
-          animation = {
-            let gradient: CAGradientLayer = CAGradientLayer()
-            gradient.frame = self.layer.frame
-            gradient.colors = [colors.top.cgColor, colors.bottom.cgColor]
-
-            self.gradient = gradient
-            self.layer.insertSublayer(gradient, at: 0)
-            self.backgroundColor = nil
-          }
+        animation = {
+          existing.colors = [colors.top.cgColor, colors.bottom.cgColor]
+          self.backgroundColor = nil
         }
 
       } else {
@@ -59,8 +48,7 @@ final class WeatherView: UIView {
         }
 
         animation = {
-          self.gradient?.removeFromSuperlayer()
-          self.gradient = nil
+          existing.colors = [UIColor.white.cgColor]
         }
 
       }
