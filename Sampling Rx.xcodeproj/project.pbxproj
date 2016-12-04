@@ -20,6 +20,7 @@
 		620ECA3C1DEC2CFF00A86C79 /* PlaceholderActionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 620ECA3B1DEC2CFF00A86C79 /* PlaceholderActionViewController.xib */; };
 		620ECA3E1DEC2DFD00A86C79 /* PlaceholderActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620ECA3D1DEC2DFD00A86C79 /* PlaceholderActionViewController.swift */; };
 		623B78C91DF3ABE3009845C4 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623B78C81DF3ABE3009845C4 /* WeatherViewModel.swift */; };
+		623B78CB1DF3ACB2009845C4 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623B78CA1DF3ACB2009845C4 /* WeatherView.swift */; };
 		62A336781DEA935200BB495E /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A336771DEA935200BB495E /* RxSwift.framework */; };
 		62A3367A1DEA935A00BB495E /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A336791DEA935A00BB495E /* RxCocoa.framework */; };
 		62A3367C1DEA93F700BB495E /* RxCocoa.framework in Copy Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = 62A336791DEA935A00BB495E /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -92,6 +93,7 @@
 		620ECA3B1DEC2CFF00A86C79 /* PlaceholderActionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceholderActionViewController.xib; sourceTree = "<group>"; };
 		620ECA3D1DEC2DFD00A86C79 /* PlaceholderActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderActionViewController.swift; sourceTree = "<group>"; };
 		623B78C81DF3ABE3009845C4 /* WeatherViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		623B78CA1DF3ACB2009845C4 /* WeatherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		62A336771DEA935200BB495E /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		62A336791DEA935A00BB495E /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		62A336801DEA957100BB495E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 			children = (
 				62F1ED3F1DF0E13900569A62 /* WeatherViewController.swift */,
 				623B78C81DF3ABE3009845C4 /* WeatherViewModel.swift */,
+				623B78CA1DF3ACB2009845C4 /* WeatherView.swift */,
 			);
 			path = WeatherContent;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				62F1ED351DF01BF000569A62 /* WeatherClientStub.swift in Sources */,
 				62B3DDB91DEBFB7F007E653D /* PlaceholderTextViewController.swift in Sources */,
 				62B3DDA41DEAE5FF007E653D /* Fugue.swift in Sources */,
+				623B78CB1DF3ACB2009845C4 /* WeatherView.swift in Sources */,
 				6206EDBA1DEEEBA600B0EC8F /* Weather.swift in Sources */,
 				62F1ED401DF0E13900569A62 /* WeatherViewController.swift in Sources */,
 				62B3DDB31DEBA43E007E653D /* Box.swift in Sources */,
