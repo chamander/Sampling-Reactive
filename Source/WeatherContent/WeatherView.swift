@@ -32,7 +32,7 @@ final class WeatherView: UIView {
 
       let animation: (() -> Void)
 
-      if case let .some(theme) = theme {
+      if let theme = theme {
         let colors: (top: UIColor, bottom: UIColor) = theme.gradientColors
         animation = {
           let gradient: CAGradientLayer = CAGradientLayer()
