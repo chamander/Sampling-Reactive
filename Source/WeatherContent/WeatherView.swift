@@ -33,22 +33,36 @@ final class WeatherView: UIView {
       let animation: (() -> Void)
 
       if let theme = theme {
-        let colors: (top: UIColor, bottom: UIColor) = theme.gradientColors
-        animation = {
-          let gradient: CAGradientLayer = CAGradientLayer()
-          gradient.frame = self.layer.frame
-          gradient.colors = [colors.top.cgColor, colors.bottom.cgColor]
 
-          self.gradient = gradient
-          self.layer.insertSublayer(gradient, at: 0)
-          self.backgroundColor = nil
+        let colors: (top: UIColor, bottom: UIColor) = theme.gradientColors
+
+        if let existing: CAGradientLayer = gradient {
+          animation = {
+            existing.colors = [colors.top.cgColor, colors.bottom.cgColor]
+          }
+        } else {
+          animation = {
+            let gradient: CAGradientLayer = CAGradientLayer()
+            gradient.frame = self.layer.frame
+            gradient.colors = [colors.top.cgColor, colors.bottom.cgColor]
+
+            self.gradient = gradient
+            self.layer.insertSublayer(gradient, at: 0)
+            self.backgroundColor = nil
+          }
         }
+
       } else {
+
+        DispatchQueue.main.async {
+          self.backgroundColor = .white
+        }
+
         animation = {
           self.gradient?.removeFromSuperlayer()
           self.gradient = nil
-          self.backgroundColor = .white
         }
+
       }
 
       UIView.transition(with: self, duration: 0.5, options: [.curveLinear], animations: animation)
