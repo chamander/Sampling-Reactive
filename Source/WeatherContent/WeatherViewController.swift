@@ -134,7 +134,12 @@ final class WeatherViewController: UIViewController {
         dispatch(sydneyBlock)
       }
 
-      DispatchQueue.main.async(execute: melbourneBlock)
+      let nilBlock: (() -> Void) = {
+        observer.onNext(nil)
+        dispatch(melbourneBlock)
+      }
+
+      DispatchQueue.main.async(execute: nilBlock)
 
       return Disposables.create { disposed = true }
 
