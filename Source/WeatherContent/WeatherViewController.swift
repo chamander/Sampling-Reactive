@@ -31,6 +31,11 @@ final class WeatherViewController: UIViewController {
       .ignoringNil()
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    contentProducer = testObservable
+  }
+
   internal var animationDuration: TimeInterval = 0.5
 
   internal var animationOptions: UIViewAnimationOptions = [.transitionCrossDissolve, .curveLinear]
