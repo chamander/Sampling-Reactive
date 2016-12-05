@@ -53,7 +53,7 @@ final class WeatherView: UIView {
 
       }
 
-      UIView.transition(with: self, duration: 0.5, options: [.curveLinear], animations: animation)
+      UIView.transition(with: self, duration: 0.5, options: [.transitionCrossDissolve, .curveLinear], animations: animation)
 
     }
 
