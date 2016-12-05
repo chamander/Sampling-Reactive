@@ -89,4 +89,51 @@ final class WeatherViewController: UIViewController {
     }
   }
 
+  private var testObservable: Observable<Weather?> {
+    return Observable<Weather?>.create { observer in
+
+      var cities: Array<City> = [
+        (7839805, "Melbourne"),
+        (2147714, "Sydney"),
+        (2063523, "Perth"),
+        (2078025, "Adelaide"),
+      ].map(City.init)
+
+      var disposed: Bool = false
+
+      func dispatch(_ work: @escaping (() -> Void)) {
+        if !disposed { DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: work) }
+      }
+
+      let adelaideBlock: (() -> Void) = {
+        let adelaide = cities.removeFirst()
+        observer.onNext(Weather(city: adelaide, current: 28.0, cloudiness: 40.0))
+        observer.onCompleted()
+      }
+
+      let perthBlock: (() -> Void) = {
+        let perth = cities.removeFirst()
+        observer.onNext(Weather(city: perth, current: 24.0, cloudiness: 80.0))
+        dispatch(adelaideBlock)
+      }
+
+      let sydneyBlock: (() -> Void) = {
+        let sydney = cities.removeFirst()
+        observer.onNext(Weather(city: sydney, current: 17.0, cloudiness: 60.0))
+        dispatch(perthBlock)
+      }
+
+      let melbourneBlock: (() -> Void) = {
+        let melbourne = cities.removeFirst()
+        observer.onNext(Weather(city: melbourne, current: 37.0, cloudiness: 20.0))
+        dispatch(sydneyBlock)
+      }
+
+      DispatchQueue.main.async(execute: melbourneBlock)
+
+      return Disposables.create { disposed = true }
+
+    }
+  }
+
 }
