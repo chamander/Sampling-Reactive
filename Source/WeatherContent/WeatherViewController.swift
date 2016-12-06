@@ -80,7 +80,7 @@ final class WeatherViewController: UIViewController {
 
       UIView.transition(with: weatherView, duration: 0.5, options: animationOptions, animations: animations)
 
-    case let.transitioning(_, weather):
+    case let .transitioning(_, weather):
       let viewModel: WeatherViewModel = WeatherViewModel(with: weather)
 
       weatherView.theme = viewModel.theme
