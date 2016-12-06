@@ -144,7 +144,7 @@ final class RotatingContentController: UIViewController {
         if !disposed { DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: work) }
       }
 
-      let restart: (() -> Void) = {
+      let restartBlock: (() -> Void) = {
         let restart: UIViewController = PlaceholderActionViewController(withPlaceholderText: "Lorem Ipsum.", buttonText: "Restart") { [unowned self] in
           self.contentProducer = self.testObservable
         }
@@ -152,22 +152,22 @@ final class RotatingContentController: UIViewController {
         observer.onCompleted()
       }
 
-      let quxBaz: (() -> Void) = {
+      let quxBazBlock: (() -> Void) = {
         let quxBaz: UIViewController = PlaceholderTextViewController(with: "Qux Baz...!")
         observer.onNext(quxBaz)
-        dispatch(restart)
+        dispatch(restartBlock)
       }
 
-      let fooBar: (() -> Void) = {
+      let fooBarBlock: (() -> Void) = {
         let fooBar: UIViewController = PlaceholderTextViewController(with: "Foo Bar?!")
         observer.onNext(fooBar)
-        dispatch(quxBaz)
+        dispatch(quxBazBlock)
       }
 
       DispatchQueue.main.async {
         let helloWorld: UIViewController = PlaceholderTextViewController(with: "Hello World!")
         observer.onNext(helloWorld)
-        dispatch(fooBar)
+        dispatch(fooBarBlock)
       }
 
       return Disposables.create { disposed = true }
