@@ -78,7 +78,7 @@ final class WeatherViewController: UIViewController {
         self.weatherInformationLabel.text = viewModel.information
       }
 
-      UIView.transition(with: weatherView, duration: 0.5, options: .curveLinear, animations: animations)
+      UIView.transition(with: weatherView, duration: 0.5, options: animationOptions, animations: animations)
 
     case let.transitioning(_, weather):
       let viewModel: WeatherViewModel = WeatherViewModel(with: weather)
@@ -90,7 +90,7 @@ final class WeatherViewController: UIViewController {
         self.weatherInformationLabel.text = viewModel.information
       }
 
-      UIView.transition(with: weatherView, duration: 0.5, options: .curveLinear, animations: animations)
+      UIView.transition(with: weatherView, duration: 0.5, options: animationOptions, animations: animations)
     }
   }
 
