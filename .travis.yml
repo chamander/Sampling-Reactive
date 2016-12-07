@@ -1,0 +1,10 @@
+language: objective-c
+osx_image: xcode8.1
+install:
+  - brew update
+  - brew uninstall --force carthage && brew install carthage
+  - brew uninstall --force swiftlint && brew install swiftlint
+before_script:
+  - rake setup
+script:
+  - rake test
