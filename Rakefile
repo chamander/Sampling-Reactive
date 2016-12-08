@@ -10,15 +10,21 @@ task :setup do
   CarthageTask::Bootstrap.execute
 end
 
+desc "Tests building the main sample target of the project."
+task :test do
+  SampleProjectTask::Build.execute
+end
+
 ## Abstract Class - Task
 
 class Task
 ## Subclasses must implement `@command`, else not a `Task`.
 ##  @command
 
-  def initialize (task, arguments)
+  def initialize (task, arguments, argumentPrefix)
     @task = task
     @arguments = arguments
+    @argumentPrefix = argumentPrefix
   end
 
   def execute
@@ -27,15 +33,15 @@ class Task
 
   def executeWith (args)
     command = @command
-    command += " #{@task}"
+    command += " #{@task}" unless @task.empty?
     args.each { |element|
       if element.is_a? Hash
         element.each { |flag, value|
-          command += " --#{flag}"
+          command += " #{@argumentPrefix}#{flag}"
           command += " #{value}" unless value.nil?
         }
       else
-        command += " --#{element}"
+        command += " #{@argumentPrefix}#{element}"
       end
     }
     sh command
@@ -44,9 +50,18 @@ end
 
 class CarthageTask < Task
   def initialize (task, arguments)
-    super(task, arguments)
+    super(task, arguments, '--')
     @command = 'carthage'
   end
 
   Bootstrap = CarthageTask.new 'bootstrap', [{'platform' => 'iphoneos'}, 'no-use-binaries']
+end
+
+class SampleProjectTask < Task
+  def initialize (task, arguments)
+    super(task, arguments, '-')
+    @command = 'xcodebuild'
+  end
+
+  Build = SampleProjectTask.new '', [{'scheme' => 'SamplingRx'}, {'destination' => "'platform=iOS Simulator,name=iPhone 7'"}]
 end
