@@ -1,4 +1,4 @@
+github "ReactiveX/RxSwift" "3.6.1"
+github "thoughtbot/Argo" "a30b0abed1333492ba7a782497783d74465d2a0b"
 github "thoughtbot/Curry" "v3.0.0"
-github "thoughtbot/Runes" "v4.0.1"
-github "ReactiveX/RxSwift" "3.0.1"
-github "thoughtbot/Argo" "v4.1.0"
+github "thoughtbot/Runes" "v4.1.0"
