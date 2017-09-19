@@ -13,7 +13,7 @@ final class PlaceholderTextViewController: UIViewController {
     self.text = text
   }
 
-  override func viewDidLoad() {
+  override func viewWillAppear(_ animated: Bool) {
     placeholderLabel.text = text
   }
 
