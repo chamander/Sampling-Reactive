@@ -26,7 +26,7 @@ final class WeatherViewController: UIViewController {
 
   private var transitions: Observable<Transition<Weather>> {
     return contentProducer
-      .combiningPrevious(startingWith: nil)
+      .combiningPrevious(startingWith: currentModel)
       .map(Transition.init)
       .ignoringNil()
   }
@@ -64,6 +64,7 @@ final class WeatherViewController: UIViewController {
       weatherView.theme = nil
 
     case let .appearing(weather):
+      currentModel = weather
       let viewModel: WeatherViewModel = WeatherViewModel(with: weather)
 
       locationLabel.isHidden = false
@@ -81,6 +82,7 @@ final class WeatherViewController: UIViewController {
       UIView.transition(with: weatherView, duration: 0.5, options: animationOptions, animations: animations)
 
     case let .transitioning(_, weather):
+      currentModel = weather
       let viewModel: WeatherViewModel = WeatherViewModel(with: weather)
 
       weatherView.theme = viewModel.theme

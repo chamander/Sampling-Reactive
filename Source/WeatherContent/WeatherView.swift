@@ -43,12 +43,9 @@ final class WeatherView: UIView {
 
       } else {
 
-        DispatchQueue.main.async {
-          self.backgroundColor = .white
-        }
-
         animation = {
           existing.colors = [UIColor.white.cgColor]
+          self.backgroundColor = .white
         }
 
       }
