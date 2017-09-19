@@ -13,7 +13,7 @@ struct Weather {
   let cloudiness: Percentage
 }
 
-extension Weather: Decodable {
+extension Weather: Argo.Decodable {
   static func decode(_ json: JSON) -> Decoded<Weather> {
     let city: Decoded<City> = City.decode(json)
     let current: Decoded<Temperature> = json <| ["main", "temp"]

@@ -12,7 +12,7 @@ struct City {
   let name: Name
 }
 
-extension City: Decodable {
+extension City: Argo.Decodable {
   static func decode(_ json: JSON) -> Decoded<City> {
     let identifier: Decoded<Identifier> = json <| "id"
     let name: Decoded<Name> = json <| "name"
