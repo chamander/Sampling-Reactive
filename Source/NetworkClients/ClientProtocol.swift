@@ -5,7 +5,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-fileprivate let apiKey: String = "402c2de16506bb59c7a6afc8b60778c2"
+private let apiKey: String = "402c2de16506bb59c7a6afc8b60778c2"
 
 extension URLRequest {
   typealias Response = (HTTPURLResponse, Data)
