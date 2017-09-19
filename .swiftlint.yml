@@ -2,6 +2,12 @@ disabled_rules:
   - line_length
   - opening_brace
   - type_name
+  - todo
+  - syntactic_sugar
+  - trailing_comma
+  - redundant_string_enum_value
+  - redundant_optional_initialization
+  - large_tuple
 included:
   - Source
   - Specs
