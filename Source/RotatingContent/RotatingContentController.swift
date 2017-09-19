@@ -119,6 +119,18 @@ final class RotatingContentController: UIViewController {
 
     DispatchQueue.main.async {
 
+      let animation: () -> Void = {
+        destination.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate(
+          [
+            self.view.topAnchor.constraint(equalTo: destination.view.topAnchor),
+            self.view.bottomAnchor.constraint(equalTo: destination.view.bottomAnchor),
+            self.view.leadingAnchor.constraint(equalTo: destination.view.leadingAnchor),
+            self.view.trailingAnchor.constraint(equalTo: destination.view.trailingAnchor),
+          ]
+        )
+      }
+
       let completion: ((Bool) -> Void) = { _ in
         source.removeFromParentViewController()
         destination.didMove(toParentViewController: self)
@@ -129,7 +141,7 @@ final class RotatingContentController: UIViewController {
         to:         destination,
         duration:   self._animationDuration,
         options:    self.animationOptions,
-        animations: nil,
+        animations: animation,
         completion: completion)
     }
   }
