@@ -1,0 +1,9 @@
+{
+  "commitish" : "v3.0.0",
+  "iOS" : [
+    {
+      "hash" : "f3e267d8bc7cc2f0d3db094461049dea25868f7c7e66a1e64ed08265e83eca53",
+      "name" : "Curry"
+    }
+  ]
+}
