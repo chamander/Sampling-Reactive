@@ -50,7 +50,7 @@ final class WeatherView: UIView {
 
 }
 
-fileprivate extension UIColor {
+private extension UIColor {
 
   convenience init(rgb: (Int, Int, Int), alpha: CGFloat = 1.0) {
     let red: CGFloat = CGFloat(rgb.0) / 255.0
