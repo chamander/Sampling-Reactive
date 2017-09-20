@@ -25,35 +25,25 @@ final class WeatherView: UIView {
   }
 
   var theme: Theme? {
-
     didSet {
+      guard let existing: CAGradientLayer = layer as? CAGradientLayer else { fatalError("Class must match `static var layerClass`.") }
 
       let animation: (() -> Void)
 
-      guard let existing: CAGradientLayer = layer as? CAGradientLayer else { fatalError("Class must match `static var layerClass`.") }
-
       if let theme = theme {
-
         let colors: (top: UIColor, bottom: UIColor) = theme.gradientColors
-
         animation = {
           existing.colors = [colors.top.cgColor, colors.bottom.cgColor]
           self.backgroundColor = nil
         }
-
       } else {
-
         animation = {
           existing.colors = [UIColor.white.cgColor]
           self.backgroundColor = .white
         }
-
       }
-
       UIView.transition(with: self, duration: 0.5, options: [.transitionCrossDissolve, .curveLinear], animations: animation)
-
     }
-
   }
 
   override static var layerClass: AnyClass { return CAGradientLayer.self }
