@@ -1,4 +1,6 @@
-github "ReactiveX/RxSwift" "3.6.1"
+github "ReactiveCocoa/ReactiveCocoa" "6.0.1"
+github "ReactiveCocoa/ReactiveSwift" "2.0.1"
+github "antitypical/Result" "3.2.3"
 github "thoughtbot/Argo" "a30b0abed1333492ba7a782497783d74465d2a0b"
 github "thoughtbot/Curry" "v3.0.0"
 github "thoughtbot/Runes" "v4.1.0"

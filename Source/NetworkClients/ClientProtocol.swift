@@ -2,8 +2,8 @@
 
 import Argo
 import Foundation
-import RxCocoa
-import RxSwift
+import ReactiveSwift
+import Result
 
 private let apiKey: String = "402c2de16506bb59c7a6afc8b60778c2"
 
@@ -50,16 +50,18 @@ extension ClientProtocol where Endpoint: RawRepresentable, Endpoint.RawValue == 
   func response(
     for endpoint: Endpoint,
     via method: URLRequest.Method,
-    withQuery query: Dictionary<String, String>) -> Observable<URLRequest.Response>
+    withQuery query: Dictionary<String, String>) -> SignalProducer<URLRequest.Response, AnyError>
   {
-    return session.rx.response(request: request(for: endpoint, via: method, withQuery: query))
+    return session.reactive.data(with: request(for: endpoint, via: method, withQuery: query)).map { ($0.1 as! HTTPURLResponse, $0.0) }
   }
 
   func json(
     for endpoint: Endpoint,
     via method: URLRequest.Method,
-    withQuery query: Dictionary<String, String>) -> Observable<Argo.JSON>
+    withQuery query: Dictionary<String, String>) -> SignalProducer<Argo.JSON, AnyError>
   {
-    return session.rx.json(request: request(for: endpoint, via: method, withQuery: query)).map(JSON.init)
+    return response(for: endpoint, via: method, withQuery: query)
+      .map { try! JSONSerialization.jsonObject(with: $0.1, options: .allowFragments) }
+      .map(JSON.init)
   }
 }

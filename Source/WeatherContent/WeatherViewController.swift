@@ -1,7 +1,7 @@
 //  Copyright © 2016 Gavan Chan. All rights reserved.
 
-import RxCocoa
-import RxSwift
+import ReactiveSwift
+import Result
 import UIKit
 
 final class WeatherViewController: UIViewController {
@@ -10,25 +10,20 @@ final class WeatherViewController: UIViewController {
 
   private let disposables: CompositeDisposable = CompositeDisposable()
 
-  private var weatherTransitioningDisposableKey: CompositeDisposable.DisposeKey? = nil
-
-  private var contentProducer: Observable<Weather?> = .empty() {
+  private var contentProducer: SignalProducer<Weather?, NoError> = .empty {
     didSet {
-      if let key = weatherTransitioningDisposableKey { disposables.remove(for: key) }
-
       let disposable: Disposable = transitions
-        .observeOn(MainScheduler.asyncInstance)
-        .subscribe { [weak self] in self?.perform(transition: $0) }
-
-      weatherTransitioningDisposableKey = disposables.insert(disposable)
+        .observe(on: QueueScheduler.main)
+        .startWithValues { [weak self] in self?.perform(transition: $0) }
+      disposables.add(disposable)
     }
   }
 
-  private var transitions: Observable<Transition<Weather>> {
+  private var transitions: SignalProducer<Transition<Weather>, NoError> {
     return contentProducer
-      .combiningPrevious(startingWith: currentModel)
+      .combinePrevious(currentModel)
       .map(Transition.init)
-      .ignoringNil()
+      .skipNil()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -96,8 +91,8 @@ final class WeatherViewController: UIViewController {
     }
   }
 
-  private var testObservable: Observable<Weather?> {
-    return Observable<Weather?>.create { observer in
+  private var testObservable: SignalProducer<Weather?, NoError> {
+    return SignalProducer<Weather?, NoError> { observer, _ in
 
       var cities: Array<City> = [
         (7839805, "Melbourne"),
@@ -114,36 +109,34 @@ final class WeatherViewController: UIViewController {
 
       let adelaideBlock: (() -> Void) = {
         let adelaide = cities.removeFirst()
-        observer.onNext(Weather(city: adelaide, current: 28.0, cloudiness: 40.0))
-        observer.onCompleted()
+        observer.send(value: Weather(city: adelaide, current: 28.0, cloudiness: 40.0))
+        observer.sendCompleted()
       }
 
       let perthBlock: (() -> Void) = {
         let perth = cities.removeFirst()
-        observer.onNext(Weather(city: perth, current: 24.0, cloudiness: 80.0))
+        observer.send(value: Weather(city: perth, current: 24.0, cloudiness: 80.0))
         dispatch(adelaideBlock)
       }
 
       let sydneyBlock: (() -> Void) = {
         let sydney = cities.removeFirst()
-        observer.onNext(Weather(city: sydney, current: 17.0, cloudiness: 60.0))
+        observer.send(value: Weather(city: sydney, current: 17.0, cloudiness: 60.0))
         dispatch(perthBlock)
       }
 
       let melbourneBlock: (() -> Void) = {
         let melbourne = cities.removeFirst()
-        observer.onNext(Weather(city: melbourne, current: 37.0, cloudiness: 20.0))
+        observer.send(value: Weather(city: melbourne, current: 37.0, cloudiness: 20.0))
         dispatch(sydneyBlock)
       }
 
       let nilBlock: (() -> Void) = {
-        observer.onNext(nil)
+        observer.send(value: nil)
         dispatch(melbourneBlock)
       }
 
       DispatchQueue.main.async(execute: nilBlock)
-
-      return Disposables.create { disposed = true }
 
     }
   }

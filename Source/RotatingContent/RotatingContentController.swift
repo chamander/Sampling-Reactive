@@ -1,8 +1,8 @@
 //  Copyright © 2016 Gavan Chan. All rights reserved.
 
 import Foundation
-import RxCocoa
-import RxSwift
+import ReactiveSwift
+import Result
 import UIKit
 
 final class RotatingContentController: UIViewController {
@@ -11,19 +11,14 @@ final class RotatingContentController: UIViewController {
 
   private let disposables: CompositeDisposable = CompositeDisposable()
 
-  private var transitionDisposableKey: CompositeDisposable.DisposeKey? = nil
-
   deinit { disposables.dispose() }
 
-  internal var contentProducer: Observable<UIViewController?> = .empty() {
+  internal var contentProducer: SignalProducer<UIViewController?, NoError> = .empty {
     didSet {
-      if let key: CompositeDisposable.DisposeKey = transitionDisposableKey { disposables.remove(for: key) }
-
       let disposable: Disposable = transitions
-        .observeOn(MainScheduler.asyncInstance)
-        .subscribe { [weak self] in self?.perform(transition: $0) }
-
-      transitionDisposableKey = disposables.insert(disposable)
+        .observe(on: QueueScheduler.main)
+        .startWithValues { [weak self] in self?.perform(transition: $0) }
+      disposables.add(disposable)
     }
   }
 
@@ -42,12 +37,12 @@ final class RotatingContentController: UIViewController {
     return animatesTransitions ? animationDuration : 0.0
   }
 
-  private var transitions: Observable<Transition<UIViewController>> {
+  private var transitions: SignalProducer<Transition<UIViewController>, NoError> {
     return contentProducer
       .map(WeakBox.init)
-      .combiningPrevious(startingWith: WeakBox(containing: currentController))
+      .combinePrevious(WeakBox(containing: currentController))
       .map { Transition(from: $0.value, to: $1.value) }
-      .ignoringNil()
+      .skipNil()
   }
 
   private func perform(transition: Transition<UIViewController>) {
@@ -146,9 +141,9 @@ final class RotatingContentController: UIViewController {
     }
   }
 
-  private var testObservable: Observable<UIViewController?> {
+  private var testObservable: SignalProducer<UIViewController?, NoError> {
 
-    return Observable<UIViewController>.create { observer in
+    return SignalProducer<UIViewController, NoError> { observer, _ in
 
       var disposed: Bool = false
 
@@ -160,29 +155,27 @@ final class RotatingContentController: UIViewController {
         let restart: UIViewController = PlaceholderActionViewController(withPlaceholderText: "Lorem Ipsum.", buttonText: "Restart") { [unowned self] in
           self.contentProducer = self.testObservable
         }
-        observer.onNext(restart)
-        observer.onCompleted()
+        observer.send(value: restart)
+        observer.sendCompleted()
       }
 
       let quxBazBlock: (() -> Void) = {
         let quxBaz: UIViewController = PlaceholderTextViewController(with: "Qux Baz...!")
-        observer.onNext(quxBaz)
+        observer.send(value: quxBaz)
         dispatch(restartBlock)
       }
 
       let fooBarBlock: (() -> Void) = {
         let fooBar: UIViewController = PlaceholderTextViewController(with: "Foo Bar?!")
-        observer.onNext(fooBar)
+        observer.send(value: fooBar)
         dispatch(quxBazBlock)
       }
 
       DispatchQueue.main.async {
         let helloWorld: UIViewController = PlaceholderTextViewController(with: "Hello World!")
-        observer.onNext(helloWorld)
+        observer.send(value: helloWorld)
         dispatch(fooBarBlock)
       }
-
-      return Disposables.create { disposed = true }
 
     }.map(Optional.init)
 

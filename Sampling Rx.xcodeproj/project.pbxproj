@@ -21,10 +21,6 @@
 		620ECA3E1DEC2DFD00A86C79 /* PlaceholderActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620ECA3D1DEC2DFD00A86C79 /* PlaceholderActionViewController.swift */; };
 		623B78C91DF3ABE3009845C4 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623B78C81DF3ABE3009845C4 /* WeatherViewModel.swift */; };
 		623B78CB1DF3ACB2009845C4 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623B78CA1DF3ACB2009845C4 /* WeatherView.swift */; };
-		62A336781DEA935200BB495E /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A336771DEA935200BB495E /* RxSwift.framework */; };
-		62A3367A1DEA935A00BB495E /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A336791DEA935A00BB495E /* RxCocoa.framework */; };
-		62A3367C1DEA93F700BB495E /* RxCocoa.framework in Copy Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = 62A336791DEA935A00BB495E /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		62A3367D1DEA93F700BB495E /* RxSwift.framework in Copy Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = 62A336771DEA935200BB495E /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		62A336811DEA957100BB495E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62A336801DEA957100BB495E /* Assets.xcassets */; };
 		62A336841DEA95BE00BB495E /* RotatingContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A336831DEA95BE00BB495E /* RotatingContentController.swift */; };
 		62B3DDA21DEAB66F007E653D /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B3DDA11DEAB66F007E653D /* Transition.swift */; };
@@ -45,6 +41,12 @@
 		62F1ED351DF01BF000569A62 /* WeatherClientStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1ED341DF01BF000569A62 /* WeatherClientStub.swift */; };
 		62F1ED381DF01F7D00569A62 /* WeatherProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1ED371DF01F7D00569A62 /* WeatherProviding.swift */; };
 		62F1ED401DF0E13900569A62 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1ED3F1DF0E13900569A62 /* WeatherViewController.swift */; };
+		A55BB4B91F71F8FE0076D7FA /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55BB4B81F71F8EA0076D7FA /* ReactiveSwift.framework */; };
+		A55BB4BA1F71F9030076D7FA /* ReactiveSwift.framework in Copy Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = A55BB4B81F71F8EA0076D7FA /* ReactiveSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A55BB4BC1F71FB990076D7FA /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55BB4BB1F71FB990076D7FA /* ReactiveCocoa.framework */; };
+		A55BB4BE1F71FB9D0076D7FA /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55BB4BD1F71FB9D0076D7FA /* Result.framework */; };
+		A55BB4C31F71FBB10076D7FA /* Result.framework in Copy Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = A55BB4BD1F71FB9D0076D7FA /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A55BB4C41F71FBB10076D7FA /* ReactiveCocoa.framework in Copy Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = A55BB4BB1F71FB990076D7FA /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,8 +76,9 @@
 				6206EDC31DEF032F00B0EC8F /* Argo.framework in Copy Carthage Frameworks */,
 				6206EDC41DEF032F00B0EC8F /* Curry.framework in Copy Carthage Frameworks */,
 				6206EDC51DEF032F00B0EC8F /* Runes.framework in Copy Carthage Frameworks */,
-				62A3367C1DEA93F700BB495E /* RxCocoa.framework in Copy Carthage Frameworks */,
-				62A3367D1DEA93F700BB495E /* RxSwift.framework in Copy Carthage Frameworks */,
+				A55BB4C31F71FBB10076D7FA /* Result.framework in Copy Carthage Frameworks */,
+				A55BB4C41F71FBB10076D7FA /* ReactiveCocoa.framework in Copy Carthage Frameworks */,
+				A55BB4BA1F71F9030076D7FA /* ReactiveSwift.framework in Copy Carthage Frameworks */,
 			);
 			name = "Copy Carthage Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,8 +97,6 @@
 		620ECA3D1DEC2DFD00A86C79 /* PlaceholderActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderActionViewController.swift; sourceTree = "<group>"; };
 		623B78C81DF3ABE3009845C4 /* WeatherViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		623B78CA1DF3ACB2009845C4 /* WeatherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
-		62A336771DEA935200BB495E /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
-		62A336791DEA935A00BB495E /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		62A336801DEA957100BB495E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		62A336831DEA95BE00BB495E /* RotatingContentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingContentController.swift; sourceTree = "<group>"; };
 		62B3DDA11DEAB66F007E653D /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
@@ -122,6 +123,9 @@
 		62F1ED341DF01BF000569A62 /* WeatherClientStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherClientStub.swift; sourceTree = "<group>"; };
 		62F1ED371DF01F7D00569A62 /* WeatherProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherProviding.swift; sourceTree = "<group>"; };
 		62F1ED3F1DF0E13900569A62 /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		A55BB4B81F71F8EA0076D7FA /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
+		A55BB4BB1F71FB990076D7FA /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		A55BB4BD1F71FB9D0076D7FA /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,8 +134,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6206EDC11DEF031900B0EC8F /* Curry.framework in Frameworks */,
-				62A3367A1DEA935A00BB495E /* RxCocoa.framework in Frameworks */,
-				62A336781DEA935200BB495E /* RxSwift.framework in Frameworks */,
+				A55BB4BC1F71FB990076D7FA /* ReactiveCocoa.framework in Frameworks */,
+				A55BB4B91F71F8FE0076D7FA /* ReactiveSwift.framework in Frameworks */,
+				A55BB4BE1F71FB9D0076D7FA /* Result.framework in Frameworks */,
 				6206EDC21DEF031900B0EC8F /* Runes.framework in Frameworks */,
 				6206EDC01DEF031900B0EC8F /* Argo.framework in Frameworks */,
 			);
@@ -187,11 +192,12 @@
 		62A336761DEA8DC700BB495E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A55BB4BD1F71FB9D0076D7FA /* Result.framework */,
+				A55BB4BB1F71FB990076D7FA /* ReactiveCocoa.framework */,
 				6206EDBD1DEF031900B0EC8F /* Argo.framework */,
 				6206EDBE1DEF031900B0EC8F /* Curry.framework */,
+				A55BB4B81F71F8EA0076D7FA /* ReactiveSwift.framework */,
 				6206EDBF1DEF031900B0EC8F /* Runes.framework */,
-				62A336791DEA935A00BB495E /* RxCocoa.framework */,
-				62A336771DEA935200BB495E /* RxSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

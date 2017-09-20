@@ -2,8 +2,8 @@
 
 import Argo
 import Foundation
-import RxCocoa
-import RxSwift
+import ReactiveSwift
+import Result
 
 typealias WeatherProvidingClient = ClientProtocol & WeatherProviding
 
@@ -18,19 +18,30 @@ final class WeatherClient: WeatherProvidingClient {
 
   private let baseURL: String = "http://api.openweathermap.org/data/2.5"
 
-  func weather(for cityID: City.Identifier, in unit: UnitTemperature = .celsius) -> Observable<Weather> {
+  func weather(for cityID: City.Identifier, in unit: UnitTemperature = .celsius) -> SignalProducer<Weather, AnyError> {
     var query: Dictionary<String, String> = [
       "id": String(reflecting: cityID),
     ]
     if let unit = unit.requestParameter { query.updateValue(unit, forKey: "units") }
 
-    let weather: Observable<Weather> = json(for: .weather, via: .get, withQuery: query)
+    let weather: SignalProducer<Weather, AnyError> = json(for: .weather, via: .get, withQuery: query)
       .map(Weather.decode)
-      .flatMap { Observable<Weather>.from(decoded: $0) }
+      .flatMap(.concat) { SignalProducer<Weather, DecodeError>.from(decoded: $0).mapError(AnyError.init) }
 
     return weather
   }
 
+}
+
+extension SignalProducerProtocol where Self.Error == DecodeError {
+  static func from(decoded: Decoded<Value>) -> SignalProducer<Value, DecodeError> {
+    switch decoded {
+    case let .success(value):
+      return SignalProducer(value: value)
+    case let .failure(error):
+      return SignalProducer(error: error)
+    }
+  }
 }
 
 fileprivate extension UnitTemperature {
